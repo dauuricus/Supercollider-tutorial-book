@@ -1,5 +1,5 @@
 # A Gentle Introduction to SuperCollider
-transrate to Japanese
+This .md is a tutorial book "A Gentle Introduction to SuperCollider (2nd edition)" written by Bruno Ruviaro translated into Japanese (Work in progress) 
 
 ![1569163432316.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png)
 
