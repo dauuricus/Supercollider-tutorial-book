@@ -351,7 +351,7 @@ Contents
 
 ------
 
-  * SuperColliderドキュメントから引用： [http](https://translate.googleusercontent.com/translate_c?depth=1&hl=ja&rurl=translate.google.com&sl=en&sp=nmt4&tl=ja&u=https://www.google.com/url%3Fq%3Dhttp://doc.sccode.org/Guides/SCIde.html%26sa%3DD%26ust%3D1568980532117000&xid=17259,1500003,15700021,15700186,15700191,15700256,15700259,15700262,15700265&usg=ALkJrhhI-oz_2-r-GOndY-3n_5r73wYV7Q)://doc.sccode.org/Guides/SCIde.html IDEインターフェースの詳細については、そのページをご覧ください。
+  *SuperColliderドキュメントから引用： [http](https://translate.googleusercontent.com/translate_c?depth=1&hl=ja&rurl=translate.google.com&sl=en&sp=nmt4&tl=ja&u=https://www.google.com/url%3Fq%3Dhttp://doc.sccode.org/Guides/SCIde.html%26sa%3DD%26ust%3D1568980532117000&xid=17259,1500003,15700021,15700186,15700191,15700256,15700259,15700262,15700265&usg=ALkJrhhI-oz_2-r-GOndY-3n_5r73wYV7Q)://doc.sccode.org/Guides/SCIde.html IDEインターフェースの詳細については、そのページをご覧ください。
 
  
 
