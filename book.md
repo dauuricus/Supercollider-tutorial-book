@@ -2972,3 +2972,21 @@ Env.perc(0.3, 2, 0.4, 0).plot; // same as above, but curve:0 means straight line
 Env.perc の直後に .kr(doneAction: 2) を追加するだけで、準備完了です。 実際、この場合は doneAction の明示的な宣言を削除して、シンプルに .kr(2) を使用することもできます。 .kr は、SCにこのエンベロープをコントロール レートで「実行」するように伝えています（これより前で見た他のコントロール レート信号と同様）。
 
 ### 38.2 Env.triangle
+
+Env.triangle は、duration, level の2つの引数のみを取ります。 
+
+例：
+
+```
+// See it:
+Env.triangle.plot;
+// Hear it:
+{SinOsc.ar([440, 442], mul: Env.triangle.kr(2))}.play;
+// By the way, an envelope can be a multiplier anywhere in your code
+{SinOsc.ar([440, 442]) * Env.triangle.kr(2)}.play;
+```
+
+
+
+**p-87**
+
