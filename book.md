@@ -31,7 +31,7 @@ You can see the original book file here. https://works.bepress.com/bruno-ruviaro
 
  
 
- コンポジションコモンズの一部
+Part of the [Composition Commons](http://network.bepress.com/arts-and-humanities/music/composition/?utm_campaign=PDFCoverPages&utm_medium=PDF&utm_source=scholarcommons.scu.edu%2Ffaculty_books%2F91)
 
 推奨される引用
 
