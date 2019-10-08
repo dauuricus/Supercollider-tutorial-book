@@ -2832,34 +2832,34 @@ Mix.fill には、作成する配列のサイズと、配列を埋めるため�
 
 ### 36 Playing an audio file
 
-First, you have to load the sound file into a buffer. The second argument to Buffer.read is the path of your sound file between double quotes. You will need to change that accordingly so that it points to a WAV or AIFF file on your computer. After buffers are loaded, simply use the PlayBuf UGen to play them back in various ways.
+まず、サウンドファイルをバッファにロードする必要があります。 Buffer.read の2番目の引数は、二重引用符 "" で囲まれたサウンドファイルのパスです。 コンピュータ上のWAVまたはAIFFファイルを指すように、それに応じて変更する必要があります。 バッファがロードされたら、PlayBuf UGen を使用してさまざまな方法でバッファを再生します。
 
-| TIP: A quick way to get the correct path of a sound file saved on your computer is drag the file onto a blank SuperCollider document. SC will give you the full path automatically, already in double quotes! |
+| ヒント：コンピューターに保存されているサウンドファイルの正しいパスを取得する簡単な方法は、ファイルを空のSuperColliderドキュメントにドラッグすることです。 SCは既に二重引用符で囲まれた完全なパスを自動的に提供します！ |
 | ------------------------------------------------------------ |
 |                                                              |
 
 ```
-// Load files into buffers:
-~buf1 = Buffer.read(s, "/home/Music/wheels-mono.wav"); // one sound file
-~buf2 = Buffer.read(s, "/home/Music/mussorgsky.wav"); // another sound file
+// buffersにロードします:
+~buf1 = Buffer.read(s, "/home/Music/wheels-mono.wav"); // 1つのサウンドファイル
+~buf2 = Buffer.read(s, "/home/Music/mussorgsky.wav"); // 別のサウンドファイル
 
-// Playback:
+// プレイバック:
 {PlayBuf.ar(1, ~buf1)}.play; // number of channels and buffer
 {PlayBuf.ar(1, ~buf2)}.play;
 
-// Get some info about the files:
+// ファイルの情報を得る:
 [~buf1.bufnum, ~buf1.numChannels, ~buf1.path, ~buf1.numFrames];
 [~buf2.bufnum, ~buf2.numChannels, ~buf2.path, ~buf2.numFrames];
 
-// Changing playback speed with 'rate'
+// 'rate'によってプレイバックスピードを変える
 {PlayBuf.ar(numChannels: 1, bufnum: ~buf1, rate: 2, loop: 1)}.play;
 {PlayBuf.ar(1, ~buf1, 0.5, loop: 1)}.play; // play at half the speed
-{PlayBuf.ar(1, ~buf1, Line.kr(0.5, 2, 10), loop: 1)}.play; // speeding up
-{PlayBuf.ar(1, ~buf1, MouseY.kr(0.5, 3), loop: 1)}.play; // mouse control
+{PlayBuf.ar(1, ~buf1, Line.kr(0.5, 2, 10), loop: 1)}.play; // スピードアップ speeding up
+{PlayBuf.ar(1, ~buf1, MouseY.kr(0.5, 3), loop: 1)}.play; // マウスコントロールで
 
-// Changing direction (reverse)
-{PlayBuf.ar(1, ~buf2, -1, loop: 1)}.play; // reverse sound
-{PlayBuf.ar(1, ~buf2, -0.5, loop: 1)}.play; // play at half the speed AND reversed
+// 方向を変える(reverse)
+{PlayBuf.ar(1, ~buf2, -1, loop: 1)}.play; // 逆再生reverse sound
+{PlayBuf.ar(1, ~buf2, -0.5, loop: 1)}.play; // play 半分のスピードで逆再生
 ```
 
 
@@ -2870,21 +2870,21 @@ First, you have to load the sound file into a buffer. The second argument to Buf
 
 ### 37 Synth Nodes
 
-In the previous PlayBuf examples, you had to hit [ctrl+.] after each line to stop the sound. In other examples, you assigned the synth to a variable (like x = {WhiteNoise.ar}.play) so that you could stop it directly with x.free.
-Every time you create a synth in SuperCollider, you know that it runs in the server, our “sound engine.” Each running synth in the server is represented by a node. We can take a peek at this tree of nodes with the command s.plotTree. Try it. A window named NodeTree will open.
+前のPlayBufの例では、各行の後に [ctrl+.] を押してサウンドを停止する必要がありました。 他の例では、シンセを変数（ x = {WhiteNoise.ar}.playなど）に割り当てて、x.free で直接停止できるようにしました。
+SuperColliderでシンセを作成するたびに、「サウンドエンジン」であるサーバーで実行されることがわかります。サーバーで実行されている各シンセは、ノードで表されます。 コマンド s.plotTree を使用して、このノードツリーを覗くことができます。 それを試してみてください。 NodeTreeという名前のウィンドウが開きます。
 
 ```
-1 // open the GUI
-2 s.plotTree;
-3 // run these one by one (don't stop the sound) and watch the Node Tree:
-4 w = { SinOsc.ar(60.midicps, 0, 0.1) }.play;
-5 x = { SinOsc.ar(64.midicps, 0, 0.1) }.play;
-6 y = { SinOsc.ar(67.midicps, 0, 0.1) }.play;
-7 z = { SinOsc.ar(71.midicps, 0, 0.1) }.play;
-8 w.free;
-9 x.free;
-10 y.free;
-11 z.free;
+// open the GUI
+s.plotTree;
+// run these one by one (don't stop the sound) and watch the Node Tree:
+w = { SinOsc.ar(60.midicps, 0, 0.1) }.play;
+x = { SinOsc.ar(64.midicps, 0, 0.1) }.play;
+y = { SinOsc.ar(67.midicps, 0, 0.1) }.play;
+z = { SinOsc.ar(71.midicps, 0, 0.1) }.play;
+w.free;
+x.free;
+y.free;
+z.free;
 ```
 
 
@@ -2893,29 +2893,30 @@ Every time you create a synth in SuperCollider, you know that it runs in the ser
 
 
 
-Every rectangle that you see in the Node Tree is a synth node. Each synth gets a temporary name (something like temp_101, temp_102, etc) and stays there for as long as it is running. Try now playing the four sines again, and hit [ctrl+.] (watch the Node Tree window). The shortcut [ctrl+.] ruthlessly stops at once all nodes that are running in the Server. On the other hand, with the .free method, you can be more subtle and free up specific nodes one at a time.
-One thing that is important to realize is that synths may stay running in the server even if they are generating only silence. Here’s an example. The amplitude of this WhiteNoise UGen will go from 0.2 to 0 in two seconds. After that, we don’t hear anything. But you will see that the synth node is still there, and won’t go away until you free it.
+ノードツリーに表示されるすべての長方形は、シンセノードです。 各シンセには一時的な名前（temp_101、temp_102など）が付けられ、実行中はそこにとどまります。 4つのサインをもう一度再生して、 [ctrl+.] を押します（ノードツリーウィンドウを確認します）。 ショートカット [ctrl+.] は、サーバーで実行されているすべてのノードを一度に無慈悲に停止します。 一方、.freeメソッドを使用すると、よりこまかに、特定のノードを1つずつ解放できます。
+
+重要なことの1つは、無音のみを生成している場合でも、シンセがサーバーで実行されたままになる可能性があることです。以下に例を示します。この WhiteNoise UGen の振幅は、2秒で0.2から0になります。その後、何も聞こえません。しかし、シンセノードはまだそこにあり、解放するまで消えません。
 
 ```
-1 // Evaluate and watch the Node Tree window for a few seconds
+1 // ノードツリーウィンドウを数秒間監視する
 2 x = {WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
 3 x.free;
 ```
 
 ### 37.1 The glorious doneAction: 2
 
-Luckily there is a way to make synths smarter in that regard: for example, wouldn’t it be great if we could ask Line.kr to notify the synth when it has finished its job (the ramp from 0.2 to 0), upon which the synth would automatically free itself up?
-Enter the argument doneAction: 2 to solve all our problems.
-Play the examples below and compare how they behave with and without doneAction: 2.
-Keep watching the Node Tree as you run the lines.
+幸いなことに、シンセをよりスマートにする方法があります。たとえば、Line.krにジョブが終了したとき（0.2から0へのランプ）に通知するようにLine.krに依頼できると便利ですよね？そうなればシンセは自動的に解放されますね。
+引数 doneAction: 2 を入力して、すべての問題を解決します。
+以下の例を再生し、doneAction: 2 を使用した場合と使用しない場合の動作を比較します。
+
+行を実行しながらノードツリーを見てみましょう。
 
 ```
-1 // without doneAction: 2
+1 // doneAction: 2 無しで
 2 {WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
-3 {PlayBuf.ar(1, ~buf1)}.play; // PS. this assumes you still have your sound file
-loaded into ~buf1 from previous section
+3 {PlayBuf.ar(1, ~buf1)}.play; // PS. これは、まだ前のセクションを引き継いで ~buf1 にサウンドファイルが読み込まれていることを前提としています
 4
-5// with doneAction: 2
+5// doneAction: 2 を使います
 6 {WhiteNoise.ar(Line.kr(0.2, 0, 2, doneAction: 2))}.play;
 7 {PlayBuf.ar(1, ~buf1, doneAction: 2)}.play;
 ```
@@ -2926,21 +2927,23 @@ loaded into ~buf1 from previous section
 
 
 
-The synths with doneAction: 2 will free themselves up automatically as soon as their job is done (that is, as soon as the Line.kr ramp is over in the first example, and as soon as the PlayBuf.ar has finished playing the sound file in the second example). This knowledge will be very useful in the next section: Envelopes.
+ doneAction: 2 のシンセは、ジョブが完了するとすぐに（つまり、最初の例で Line.kr ランプが終了し、2番目の例のサウンドファイルの PlayBuf.ar が再生を終了するとすぐに）自動的に解放されます。この知識は、次のセクション「エンベロープ」で非常に役立ちます。
 
-### 38 Envelopes
+### 38 エンベロープ
 
-Up to now most of our examples have been continuous sounds. It is about time to learn how to shape the amplitude envelope of a sound. A good example to start with is a percussive envelope.
-Imagine a cymbal crash. The time it takes for the sound to go from silence to maximum amplitude is very small—a few miliseconds, perhaps. This is called the attack time. The time it takes for the sound of the cymbal to decrease from maximum amplitude back to silence (zero) is a little longer, maybe a few seconds. This is called the release time.
-Think of an amplitude envelope simply as a number that changes over time to be used as the multiplier (mul) of any sound-producing UGen. These numbers should be between 0 (silence) and 1 (full amp), because that’s how SuperCollider understands amplitude. You may have realized by now that the last example already included an amplitude envelope: in
-{WhiteNoise.ar(Line.kr(0.2, 0, 2, doneAction: 2))}.play, we make the amplitude of the white noise go from 0.2 to 0 in 2 seconds. A Line.kr, however, is not a very flexible type of envelope.
-Env is the object you will be using all the time to define all sorts of envelopes.Env has many useful methods; we can only look at a few here. Feel free to explore the Env Help file to learn more.
+これまでの例のほとんどは連続音でした。 音の振幅エンベロープを形作る方法を学ぶ時が来ました。始めるのに良い例は、パーカッシブ エンベロープです。
+
+シンバルのクラッシュを想像してください。 音が無音から最大振幅になるまでにかかる時間は非常に短く、おそらく数ミリ秒です。 これは、attack time と呼ばれます。 シンバルの音が最大振幅から無音（ゼロ）に戻るまでにかかる時間は、もう少し長く、おそらく数秒です。 これは release time と呼ばれます。
+
+振幅エンベロープは、単に音を生成するUGenの乗数（mul）として使用される時間とともに変化する数値と考えてください。 これらの数値は、SuperColliderが振幅を理解する方法であるため、0（無音）から1（フルアンプ）の間である必要があります。
+
+これまでに、最後の例には既に振幅エンベロープが含まれていることに気付いたかもしれません。
+{WhiteNoise.ar(Line.kr(0.2, 0, 2, doneAction: 2))}.play によって、2秒間でホワイトノイズの振幅を0.2から0に変更します。 ただし、Line.krは、非常に柔軟なタイプのエンベロープではありません。
+
+Env は、あらゆる種類のエンベロープを定義するために常に使用するオブジェクトです。Env には多くの便利なメソッドがあります。 ここでは少しだけ見ます。 詳細については、Env ヘルプファイルをご覧ください。
 
 
 
 **p-86**
-
-
-
 
 
