@@ -2947,3 +2947,28 @@ Env は、あらゆる種類のエンベロープを定義するために常に�
 **p-86**
 
 
+
+### 38.1 Env.perc
+
+Env.perc は、パーカッシブなエンベロープを取得する便利な方法です。それは、attackTime、releaseTime、level、および curve の4つの引数を取ります。シンセ以外の典型的なシェイプを見てみましょう。
+
+```
+Env.perc.plot; // using all default args
+Env.perc(0.5).plot; // attackTime: 0.5
+Env.perc(attackTime: 0.3, releaseTime: 2, level: 0.4).plot;
+Env.perc(0.3, 2, 0.4, 0).plot; // same as above, but curve:0 means straight lines
+```
+
+
+これで、次のようなシンセに簡単に接続できます:
+
+```
+{PinkNoise.ar(Env.perc.kr(doneAction: 2))}.play; // default Env.perc args
+{PinkNoise.ar(Env.perc(0.5).kr(doneAction: 2))}.play;
+{PinkNoise.ar(Env.perc(0.3, 2, 0.4).kr(2))}.play;
+{PinkNoise.ar(Env.perc(0.3, 2, 0.4, 0).kr(2))}.play;
+```
+
+Env.perc の直後に .kr(doneAction: 2) を追加するだけで、準備完了です。 実際、この場合は doneAction の明示的な宣言を削除して、シンプルに .kr(2) を使用することもできます。 .kr は、SCにこのエンベロープをコントロール レートで「実行」するように伝えています（これより前で見た他のコントロール レート信号と同様）。
+
+### 38.2 Env.triangle
