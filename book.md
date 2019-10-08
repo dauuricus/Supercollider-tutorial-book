@@ -16,7 +16,7 @@ https://creativecommons.org/licenses/by-sa/4.0/deed.ja
 
 ------
 
-  ファカルティブックギャラリー
+Faculty Book Gallery
 
 ------
 
