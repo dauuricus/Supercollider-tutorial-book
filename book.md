@@ -27,7 +27,7 @@ You can see the original book file here. https://works.bepress.com/bruno-ruviaro
 
   *サンタクララ大学* 、bruviaro@ scu.edu
 
-  これと追加の作品をhttp://scholarcommons.scu.edu/faculty_booksでフォローしてください。
+  Follow this and additional works at:http://scholarcommons.scu.edu/faculty_books
 
  
 
