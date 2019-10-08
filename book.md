@@ -2758,8 +2758,6 @@ x.free;
 
 ### 35 Mix と Splay
 
-Here’s a cool trick. You can use multichannel expansion to generate complex sounds, and then mix it all down to mono or stereo with Mix or Splay:
-
 ここにクールなトリックがあります。 マルチチャンネル拡張を使用して複雑なサウンドを生成し、それをすべてMixたはSplayでモノラルまたはステレオにミックスダウンできます:
 
 ```
@@ -2794,10 +2792,7 @@ d.free;
 
 
 
-Can you see the multichannel expansion at work in that last Splay example? The only difference is that the array is first stored into a variable (harmonics) before being used in the UGens. The array harmonics has 9 items, so the synth will expand to 9 channels. Then, just before the .play, Splay takes in the array of nine channels and mix it down to stereo, spreading the channels evenly from left to right.*
-Mix has another nice trick: the method fill. It creates an array of synths and mixes it down to mono all at once.
-
-その最後の Splay の例で、マルチチャンネル拡張が機能しているのを見ることができますか？ 唯一の違いは、UGen で使用される前に、配列が最初に変数（調和）に格納されることです。 アレイハーモニクスには9つのアイテムがあるため、シンセは9チャンネルに拡張されます。 次に、.play の直前に、Splay は9つのチャンネルの配列を取り込み、ステレオにミックスダウンして、チャンネルを左から右に均等に広げます。*
+最後の Splay の例で、マルチチャンネル拡張が機能しているのを見ることができますか？ 唯一の違いは、UGen で使用される前に、配列が最初に変数（harmonics）に格納されることです。 array harmonics には9つのアイテムがあるため、シンセは9チャンネルに拡張されます。 次に、.play の直前に、Splay は9つのチャンネルの配列を取り込み、ステレオにミックスダウンして、チャンネルを左から右に均等に展開します。*
 
 Mix にはもう1つの素晴らしいトリックがあります：メソッド fill です。 シンセの配列を作成し、それを一度にモノラルにミックスダウンします。
 
@@ -2817,18 +2812,17 @@ FreqScope.new;
 n.free;
 ```
 
-You give two things to Mix.fill: the size of the array you want to create, and a function (in curly braces) that will be used to fill up the array. In the first example above, Mix.fill evaluates the function 16 times. Note that the function includes a variable component: the frequency of the sine oscillator can be any random number between 100 and 3000. Sixteen sine waves will be created, each with a different random frequency. They will all be mixed down to mono, and you’ll hear the result on your left channel. The second example shows that the function can take a “counter” argument that keeps track of the number of iterations (just like Array.fill).
-Twelve sine oscillators are generated following the harmonic series, and mixed down to a single note in mono.
 
-Mix.fill には、作成する配列のサイズと、配列を埋めるために使用される関数（中括弧）の2つのことを指定します。 上記の最初の例では、Mix.fill は関数を16回評価します。 関数には可変成分が含まれていることに注意してください。正弦発振器の周波数は、100から3000の間の任意の乱数にすることができます。それぞれが異なるランダム周波数を持つ16の正弦波が作成されます。 それらはすべてモノラルにミックスダウンされ、左チャンネルで結果が聞こえます。 2番目の例は、関数が（ Array.fill のように）反復回数を追跡する counter 引数を取ることができることを示しています。
 
-12個のサインオシレーターがハーモニックシリーズに続いて生成され、モノラルで単一のノートにミックスダウンされます。
+Mix.fill には、作成する配列のサイズと、配列を埋めるために使用される関数（中括弧）の2つのことを指定します。 上記の最初の例では、Mix.fill は関数を16回評価します。 関数には可変成分が含まれていることに注意してください。正弦発振器の周波数は、100から3000の間の任意の乱数にすることができます。それぞれが異なるランダム周波数を持つ16の正弦波が作成されます。 それらはすべてモノラルにミックスダウンされ、結果が左チャンネルで聞きこえます。 2番目の例は、関数が（ Array.fill のように）反復回数を追跡する counter 引数を取ることができることを示しています。
+
+12個の sine オシレーターがハーモニックシリーズに続いて生成され、モノラルで単一のノートにミックスダウンされます。
 
 ------
 
-*The last line before the .play could be explicitly written as Out.ar(0, Splay.ar(snd)). Remember that SuperCollider is graciously filling in the gaps and throwing in a Out.ar(0...) there—that’s how the synth knows it should play into your channels left (bus 0) and right (bus 1).
 
-*.playの前の最後の行は、Out.ar(0, Splay.ar(snd)) として明示的に記述できます。 SuperColliderが丁寧にギャップを埋め、そこに Out.ar（0 ...）を投入していることを忘れないでください。これは、シンセが、左（バス0）と右（バス1）のチャンネルで再生する必要があることを認識していることです。
+
+*.play の前の最後の行は、Out.ar(0, Splay.ar(snd)) として明示的に記述できます。 SuperColliderが丁寧にギャップを埋め、そこに Out.ar(0...) を投入していることを忘れないでください。これは、シンセが、左 (bus 0) と右 (bus 1) のチャンネルで再生する必要があることを認識していることです。
 
 
 
@@ -2945,7 +2939,6 @@ Env is the object you will be using all the time to define all sorts of envelope
 
 
 **p-86**
-
 
 
 
