@@ -1611,7 +1611,7 @@ ERROR: Message ’bark’ not understood.
 
 
 
-![animal](C:\Users\sa0ss\Downloads\sounds\supercollider\animal.PNG)
+![animal.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/10c60b8f-5118-7075-71a4-7ddc3ecf901b.png)
 
 図4 Hypothetical class hierarchy.
 
