@@ -2672,16 +2672,16 @@ a = {Out.ar(55, SinOsc.ar([800, 880], mul: LFPulse.ar(2)))}.play;
 a.free;
 ```
 
-Thanks to multichannel expansion, the busy tone uses two channels. When (in synth a) we route the busy tone to bus 55, two buses are actually being used up—number 55, and the immediately adjacent bus 56. In the reverb (synth r), we indicate with In.ar(55, 2) that we want to read 2 channels starting from bus 55: so both 55 and 56 get into the reverb. The output of the reverb is in turn also expanded to two channels, so synth r sends sound out to buses 0 and 1 (left and right channels of our sound card).
+ マルチチャネル拡張のおかげで、ビジートーンは2つのチャネルを使用します。
+(シンセaで)ビジートーンを bus 55 にルーティングすると、2つの bus が実際に使い果たされます。bus 55 と、すぐ隣の bus 56 です。reverb (synth r) では、In.ar(55, 2) で bus 55 から始まる2つのチャンネルを読み取りたい場合：55と56の両方が reverb に入ります。reverb の出力も2つのチャンネルに拡張されるため、synth r はbus 0と bus 1 (サウンドカードの左右のチャンネル)にサウンドを送信します。
 
-マルチチャネル拡張のおかげで、ビジートーンは2つのチャネルを使用します。
-(シンセaで)ビジートーンをバス55にルーティングすると、2つのバスが実際に使い果たされます。55と、すぐ隣のバス56です。リバーブ(synth r)では、In.ar(55, 2) バス55から始まる2つのチャンネルを読み取りたい場合：55と56の両方がリバーブに入ります。リバーブの出力も2つのチャンネルに拡張されるため、synth rはバス0と1(サウンドカードの左右のチャンネル)にサウンドを送信します。
+ 今、ソースシンセをエフェクトシンセに接続するためのバス番号(55)の選択は任意でした: 16から127の間の他の番号でもかまいません(バス0から15はサウンドカードの出力と入力のために予約されています)。
 
-現在、ソースシンセをエフェクトシンセに接続するためのバス番号(55)の選択は任意でした: 16から127の間の他の番号でもかまいません(バス0から15はサウンドカードの出力と入力のために予約されています)。バス番号を自分でトラッキングしなければならないとしたら、どれほど不便でしょう。パッチが複雑になったらすぐに、悪夢を想像してください。"リバーブ用に再度選択したバス番号は？59または95でしたか？遅延のバス番号はどうですか？27だったと思う？思い出せません..."などなど。
+バス番号を自分でトラッキングしなければならないとしたら、どれほど不便でしょう。パッチが複雑になったらすぐに、悪夢を想像してください。"リバーブ用に再度選択したバス番号は？59または95でしたか？遅延のバス番号はどうですか？27だったと思う？思い出せない..." などなど。
 
-SuperColliderは、Busオブジェクトを使用してこれを処理します。上記の例では、デモンストレーションのために悪名高いバス55のみを手動で割り当てました。
-SuperColliderの日常生活では、単にBusオブジェクトを使用する必要があります。
-Busオブジェクトは、使用可能なバスを選択して追跡する作業を行います。これがあなたの使い方です：
+SuperColliderは、Busオブジェクトを使用してこれを処理します。上記の例では、デモンストレーションのために悪名高い bus 55 のみを手動で割り当てました。
+SuperColliderの日常生活では、シンプルに Bus オブジェクトを使用するべきです。
+Bus オブジェクトは、常に使用可能なバスを選択して作業を行います。これがあなたの使い方です：
 
 
 
