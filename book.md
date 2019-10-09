@@ -1678,7 +1678,7 @@ round(3.1415, 0.1); // 関数表記
 > したがって、安全にするために、これらの引数を明確にし、それぞれをネストされたメッセージと引数に置き換えることができます。
 >
 > ```
-> 1serve(toss(lettuce, tomato, cheese), bake(fish, 400, 20), mix(banana, icecream))
+> serve(toss(lettuce, tomato, cheese), bake(fish, 400, 20), mix(banana, icecream))
 > ```
 
 ------
