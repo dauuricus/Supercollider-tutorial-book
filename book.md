@@ -3136,3 +3136,49 @@ EnvGen は、Env によって定義されたブレークポイントエンベロ
 
 **p-91**
 
+
+
+### 39 シンセの定義
+
+  これまで、シンセをシームレスに定義し、すぐに再生してきました。さらに、.set メッセージにより、シンセコントロールをリアルタイムで変更できる柔軟性が得られました。ただし、シンセを最初に定義し(すぐに再生せずに)、後でのみ再生したい場合があります。つまり、レシピを書き留める瞬間(シンセの定義)とケーキを焼く瞬間(サウンドを作成する)を分離する必要があるということです。
+
+### 39.1 SynthDefとSynth
+
+ SynthDef は、シンセの"レシピを書く"ために使用するものです。その後、Synth で再生できます。以下に簡単な例を示します。
+
+```c++
+// Synth definition with SynthDef object
+SynthDef("mySine1", {Out.ar(0, SinOsc.ar(770, 0, 0.1))}).add;
+// Play a note with Synth object
+x = Synth("mySine1");
+x.free;
+
+// A slightly more flexible example using arguments
+// and a self􀀀terminating envelope (doneAction: 2)
+SynthDef("mySine2", {arg freq = 440, amp = 0.1;
+	var env = Env.perc(level: amp).kr(2);
+	var snd = SinOsc.ar(freq, 0, env);
+	Out.ar(0, snd);
+}).add;
+
+Synth("mySine2"); // using default values
+Synth("mySine2", [\freq, 770, \amp, 0.2]);
+Synth("mySine2", [\freq, 415, \amp, 0.1]);
+Synth("mySine2", [\freq, 346, \amp, 0.3]);
+Synth("mySine2", [\freq, rrand(440, 880)]);
+```
+
+
+
+**p-92**
+
+
+
+SynthDef の最初の引数は、シンセのユーザー定義名です。
+2番目の引数は UGen グラフを指定する関数です(これが UGen の組み合わせが呼び出される方法です)。Out.ar を明示的に使用して、信号を送信するバスを指定する必要があることに注意してください。最後に、SynthDefはメッセージ .add を最後に受け取ります。つまり、SCが認識しているシンセのコレクションに追加することになります。
+
+これは、SuperColliderを終了するまで有効です。
+SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれらを再生できます。
+
+最初の引数は使用するシンセ定義の名前で、2番目の（オプション）引数は指定したいパラメーター（ freq、amp など）を持つ配列です。
+
