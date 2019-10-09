@@ -2984,7 +2984,7 @@ Env.triangle は、duration, level の2つの引数のみを取ります。
 Env.triangle.plot;
 // Hear it:
 {SinOsc.ar([440, 442], mul: Env.triangle.kr(2))}.play;
-// By the way, an envelope can be a multiplier anywhere in your code
+// ところで、エンベロープはコードの任意の場所で乗数にすることができます
 {SinOsc.ar([440, 442]) * Env.triangle.kr(2)}.play;
 ```
 
@@ -2994,5 +2994,145 @@ Env.triangle.plot;
 
 
 
+### 38.3 Env.linen
 
+Env.linenは、アタック、サステイン部分、およびリリースを含むラインエンベロープについて説明しています。レベルと曲線の種類も指定できます。
+例：
+
+```c++
+// See it: Env.linen.plot; // Hear it: SinOsc.ar([300, 350], mul: Env.linen(0.01, 2, 1,
+0.2).kr(2)).play;
+```
+
+
+
+### 38.4 Env.pairs
+
+さらに柔軟性が必要ですか？
+Env.pairsを使用すると、任意の形状と期間のエンベロープを作成できます。
+Env.pairsは、2つの引数を取ります。[time, level]ペアの配列、および曲線のタイプ(使用可能なすべての曲線タイプについては、Env Helpファイルを参照してください)。
+
+```c++
+(
+{
+	var env = Env.pairs([[0, 0], [0.4, 1], [1, 0.2], [1.1, 0.5], [2, 0]], \lin);
+	env.plot;
+	SinOsc.ar([440, 442], mul: env.kr(2));
+}.play;
+)
+```
+
+
+
+ 次のようなペアの配列を読み取ります:
+
+​		At time 0, be at level 0;
+
+​		At time 0.4, be at level 1;
+
+​		At time 1, be at level 0.2;
+
+​		At time 1.1, be at level 0.5;
+
+​		At time 2, be at level 0.
+
+
+
+**p-88**
+
+
+
+### 38.4.1 Envelopes—not just for amplitude
+
+これらの同じシェイプを使用して振幅以外の何かをコントロールすることを妨げるものは何もありません。
+必要な数値の範囲に合わせてスケーリングする必要があります。
+たとえば、エンベロープを作成して、時間の経過に伴う周波数の変化をコントロールできます。
+
+```c++
+(
+{
+	var freqEnv = Env.pairs([[0, 100], [0.4, 1000], [0.9, 400], [1.1, 555], [2,
+440]], \lin);
+	SinOsc.ar(freqEnv.kr, mul: 0.2);
+}.play;
+)
+```
+
+エンベロープは、時間の経過とともに変化する必要があるシンセパラメーターをコントロールする強力な方法です。
+
+
+
+### 38.5 ADSR Envelope
+
+これまでに表示されたすべてのエンベロープには、1つの共通点があります。それらは、事前定義された固定の duration を持っています。 ただし、このタイプのエンベロープが適切でない場合があります。 たとえば、MIDIキーボードで演奏しているとします。 キーを押すと、ノートの attack がトリガーされます。 リリースは、キーから指を離したときです。 ただし、事前には指がキー押している時間はわかりません。 この場合に必要なのは、いわゆる“持続エンベロープ”です。
+
+
+
+**p-89**
+
+
+
+ASR（アタック、サステイン、リリース）がエンベロープに適合します。 より一般的なバリエーションは、ADSRエンベロープ（Attack、Decay、Sustain、Release）です。 両方見てみましょう。
+
+```c++
+// ASR
+// Play note ('press key')
+// attackTime: 0.5 seconds, sustainLevel: 0.8, releaseTime: 3 seconds
+x = {arg gate = 1, freq = 440; SinOsc.ar(freq: freq, mul: Env.asr(0.5, 0.8, 3).kr(
+	doneAction: 2, gate: gate))}.play;
+// Stop note ('finger off the key' 􀀀 activate release stage)
+x.set(\gate, 0); // alternatively, x.release
+
+// ADSR (attack, decay, sustain, release)
+// Play note:
+(
+d = {arg gate = 1;
+	var snd, env;
+	env = Env.adsr(0.01, 0.4, 0.7, 2);
+	snd = Splay.ar(BPF.ar(Saw.ar((32.1, 32.2..33)), LFNoise2.kr(12).range(100,1000), 0.05, 10));
+	Out.ar(0, snd * env.kr(doneAction: 2, gate: gate));
+}.play;
+)
+// Stop note:
+d.release; // this is equivalent to d.set(\gate, 0);
+```
+
+Key concepts:
+
+Attack　ゼロ（無音）からピーク振幅までにかかる時間（秒）
+
+Decay　ピーク振幅からサステイン振幅まで下降するのにかかる時間（秒）
+
+Sustain　音を保持する振幅（0〜1）（重要：これは時間とは関係ありません）
+
+Release　サステインレベルからゼロ（無音）になるまでにかかる時間（秒単位）。
+
+
+
+**p-90**
+
+
+
+持続エンベロープには事前にわかっている total duration がないため、いつスタートする(attackをトリガーする)か、いつ停止する(release をトリガーする)かを通知する必要があります。この通知は gate と呼ばれます。gate は、エンベロープに"開く"(1)と"閉じる"(0)を指示するものであり、音を開始および停止します。
+
+ASRまたはADSRエンベロープをシンセで機能させるには、gate 引数を宣言する必要があります。通常、シンセの再生をすぐに開始するため、デフォルトは gate = 1 です。シンセを停止したい場合は、単に .release または .set(\gate,0) メッセージを送信します。エンベロープのリリース部分がトリガーされます。たとえば、リリース時間が3の場合、メッセージ .set(\gate,0) を送信した瞬間から音が消えるまで3秒かかります。
+
+
+
+### 38.6 EnvGen
+
+記録については、以下のコードに示すように、エンベロープを生成するためにこのセクションで学んだ構成はショートカット（短縮）であることを知っておく必要があります。
+
+```c++
+// これは:
+{ SinOsc.ar * Env.perc.kr(doneAction: 2) }.play;
+// ... これのショートカットです:
+{ SinOsc.ar * EnvGen.kr(Env.perc, doneAction: 2) }.play;
+```
+
+EnvGen は、Env によって定義されたブレークポイントエンベロープを実際に再生する UGen です。すべての実用的な目的のために、ショートカット（短縮形）を引き続き使用できます。 ただし、ヘルプファイルやその他のオンライン例で EnvGen が使用されていることがよくあるので、これらの表記は同等であることを知っておくと便利です。
+
+
+
+**p-91**
 
