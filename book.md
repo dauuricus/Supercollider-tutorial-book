@@ -22,7 +22,7 @@ Faculty Book Gallery
 
   **2014**
 
-##  SuperColliderの紹介(第2版)
+#  SuperColliderの優しい紹介(第2版)
 
  
 
@@ -49,13 +49,13 @@ Part of the [Composition Commons](http://network.bepress.com/arts-and-humanities
 ![1569163002975.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/d258b0a8-229b-8821-6af4-2ca3b8021549.png)
   
 
-##  **SuperColliderの優しい紹介**
+#  SuperColliderの優しい紹介
 
 
 
 ### 著者　ブルーノ・ルヴィアロ
 
-#### 翻訳　[ねことほんだな]
+### 翻訳　[ねことほんだな]
 
 
  ![1569163432316.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png)
