@@ -317,7 +317,7 @@ Contents
 
  
 
-![1569208635624](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1569208635624.png)図1：SuperCollider IDEインターフェース。
+![1569208635624.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/fd36067e-c4ed-041b-07dc-80f21dd062d1.png)図1：SuperCollider IDEインターフェース。
 
 | ヒント：このドキュメント全体を通して、ctrl(コントロール)は、LinuxおよびWindowsプラットフォームで使用されるキーボードショートカットのmodifierキーを示します。Mac OSXでは、代わりにcmd(コマンド)を使用します。 |
 | ------------------------------------------------------------ |
@@ -887,7 +887,7 @@ Pbind(
 
  
 
-![1569208590557](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1569208590557.png) 
+![1569208590557.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/d10a0d70-eec3-8419-3104-17b911ca5fd4.png)
 
 図2：音階、ノート番号、ミディノット、および周波数の比較
 
@@ -1554,7 +1554,7 @@ var myDurs = Pseq([Pn(1,5),3,Pn(1,5),3,Pn(1,6),1/2,1/2,1,1,3,1,3] ,inf)* 0.4;
 
 
 
-![Pbind counterpoint with a Tchaikovsky melody](C:\Users\sa0ss\Downloads\sounds\Pbind counterpoint with a Tchaikovsky melody.PNG)
+![Pbind counterpoint with a Tchaikovsky melody.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/82414aed-5b0a-428e-943d-47f0e28cf1e8.png)
 
 図3 pbind Tchaikovsky melodyの対位法：
 
@@ -1608,7 +1608,7 @@ ERROR: Message ’bark’ not understood.
 
 
 
-![animal](C:\Users\sa0ss\Downloads\sounds\supercollider\animal.PNG)
+![animal.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/10c60b8f-5118-7075-71a4-7ddc3ecf901b.png)
 
 図4 Hypothetical class hierarchy.
 
@@ -1966,7 +1966,7 @@ case
 
  同じタスクを数回実行していることに気付いたら、再利用可能な関数を作成するのがよいかもしれません。 関数は、"エンクロージャー"セクションで学習したように、中括弧内に記述されたものです。 David Touretzkyは、次のように関数の概念を紹介しています。"関数は、データが流れるボックスとして考えてください。 関数は何らかの方法でデータを操作し、その結果が流出します。"*
 
-![function](C:\Users\sa0ss\Downloads\sounds\supercollider\function.PNG)
+![function.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8a23923-6036-794c-68d4-ff98b82dfb04.png)
 
  図5：関数の一般的な考え方。
 
@@ -2222,7 +2222,7 @@ midinote is " ++ item.cpsmidi.round).postln});
 
  最初に括弧を開いて特定のメソッドに引数を追加すると、SCは小さな"ツールヒントヘルプ"を表示して、予想される引数が何であるかを示します。 たとえば、図6に表示される行の先頭を入力します。最初のかっこを開いた直後に、SinOsc.arの引数がfreq,phase,mul, および add であることを示すツールチップが表示されます。 また、デフォルト値が何であるかを示しています。 これは、SinOscヘルプファイルから取得する情報とまったく同じです。 ツールチップが消えた場合は、[ctrl + Shift + Space] で元に戻すことができます。 
 
-  ![1570289368565](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1570289368565.png)
+![1570289368565.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/d222e51b-79dc-1ce1-50f3-60063ddfb892.png)
 
 図6：入力すると役立つ情報が表示されます 
 
@@ -2471,7 +2471,7 @@ UGen がどのような引数を受け入れるかをどのようにして見つ
 
 図7は、UGen 出力の再スケーリングにおける mul およびaddの動作を視覚化するのに役立ちます(SinOsc がデモとして使用されます)。
 
-![Scaling UGen ranges](C:\Users\sa0ss\Downloads\sounds\supercollider\Scaling UGen ranges.PNG)
+![Scaling UGen ranges.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/952fb4e4-90c1-200f-8d64-aed50dbbf2ca.png)
 
 図7: Scaling UGen ranges with mul and add
 
@@ -2546,7 +2546,7 @@ x.free;
 
 *セクション41で制御バスを簡単に見ていきます。
 
-![Audio buses and Meter window](C:\Users\sa0ss\Downloads\sounds\supercollider\Audio buses and Meter window.png)
+![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b013c653-bad1-9b5d-1f57-6289199cacc5.png)
 
 図8：SCのオーディオバスとメーターウィンドウ
 
