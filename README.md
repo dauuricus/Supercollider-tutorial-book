@@ -1,6 +1,7 @@
 # Supercollider-tutorial-book
 ## A Gentle Introduction to SuperCollider
 This book.md is translation into Japanese a very good tutorial book "A Gentle Introduction to SuperCollider (2nd edition)" published by Bruno Ruviaro. (Work In Progress...)
+![coverart](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/a-cat-may-appear.png?raw=true)
 
 book.mdは、Bruno Ruviaroが発行した非常に優れたチュートリアル本「SuperColliderの優しい紹介（第2版）」を日本語に翻訳したものです。 （作業中）
 
