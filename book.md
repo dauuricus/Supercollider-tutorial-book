@@ -3185,7 +3185,7 @@ SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれら�
 最初の引数は使用するシンセ定義の名前で、2番目の（オプション）引数は指定したいパラメーター（ freq、amp など）を持つ配列です。
 
 ### 39.2 Example
-これはもっと長い例です。 SynthDef を追加した後、array トリックを使用して、ランダムなピッチと振幅で6音のコードを作成します。 各シンセはarrayのスロットの1つに格納されているため、個別にリリースできます。
+これはもっと長い例です。 SynthDefを追加した後、arrayトリックを使用して、ランダムなピッチと振幅で6音のコードを作成します。 各シンセはarrayのスロットの1つに格納されているため、個別にリリースできます。
 
 
 
@@ -3225,7 +3225,7 @@ a[5].set(\gate, 0);
 SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
 ```
 
-上記のSynthDefを理解するために：
+上記の SynthDef を理解するために：
 * 結果として得られるサウンドは、ローパスフィルターを通過する7つの厳密に調整されたノコギリ波オシレーターの合計です。
  * これらの7つのオシレーターは、マルチチャンネル拡張により作成されます。
 
@@ -3235,9 +3235,9 @@ SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
 
 
 
-•可変コーラスとは何ですか？ 周波数に LFNoise2.kr を掛けたものです。 7項目の配列がLFNoise2の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
+* 変数 chorus とは何ですか？ 周波数に LFNoise2.kr を掛けたものです。 7項目の配列がLFNoise2の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
 
-•ソースサウンド LFSaw.ar は、周波数として可変コーラスを使用します。 具体的な例：60 Hzの周波数値の場合、可変コーラスは次のような式になります
+* ソースサウンド LFSaw.ar は、周波数として変数 chorus を使用します。 具体的な例：60 Hzの周波数値の場合、変数 chorus は次のような式になります
 
 
 
@@ -3245,22 +3245,25 @@ SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
 60 * [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
 ```
 
+リスト内の数値は、各 LFNoise2 の速度に応じて常に上下に変化します。 最終結果は、常に 60〜61.2 （60 * 1.02） の間でスライドする7つの周波数のリストです。 これはコーラスエフェクトと呼ばれます、また変数名（chorus）です。
 
+* 変数 chorus を LFSaw.ar の freq として使用すると、マルチチャンネル拡張が発生します。これで、わずかに異なる周波数を持つ7つのノコギリ波ができました。
 
-リスト内の数値は、各 LFNoise2 の速度に応じて常に上下に変化します。 最終結果は、常に 60〜61.2 （60 * 1.02） の間でスライドする7つの周波数のリストです。 これはコーラス効果と呼ばれます、また変数名です。
+* 変数 filtermod は、非常にゆっくり（16秒間に1サイクル）動く正弦波 oscillator であり、出力範囲は1〜10にスケーリングされます。 これは、ローパスフィルターのカットオフ周波数を変調するために使用されます。
 
-• When the variable chorus is used as freq of LFSaw.ar, multichannel expansion happens: we have now seven sawtooth waves with slightly different frequencies.
-• The variable filtermod is just a sine oscillator moving very slowly (1 cycle over 16 seconds), with its output range scaled to 1-10. This will be used to modulate the cutoff frequency of the low pass filter.
-• The variable snd holds the low pass filter (LPF), which takes source as input, and filters out all frequencies above its cutoff frequency. This cutoff is not a fixed valued: it is the expression freq * filtermod. So in the example assuming freq = 60, this becomes a number between 60 and 600. Remember that filtermod is a number oscillating between 1 and 10, so the multiplication would be 60 * (1 to 10).
+* 変数 snd は、ローパスフィルター（LPF）を保持します。LPF は、入力としてソースを取得し、カットオフ周波数を超えるすべての周波数をフィルター処理します。 このカットオフは固定値ではなく、式 freq * filtermod です。 したがって、freq = 60 を想定した例では、これは60〜600の数値になります。filtermod は1〜10の間で振動する数値であるため、乗算は 60 *(1〜10) になります。
 
 **p-95**
 
-• LPF also multichannel expands to seven copies. The amplitude envelope env is also applied right there.
-• Finally, Splay takes this array of seven channels and mixes it down to stereo.
+
+
+* LPF は、マルチチャネルも7つのコピーに拡張します。 振幅エンベロープ envもそこに適用されます。
+
+* 最後に、Splayはこの7つのチャンネルの配列を取り、ステレオにミックスダウンします。
 
 ### 39.3 Under the hood
-This two-step process of first creating the SynthDef (with a unique name) and then calling aSynth is what SC does all the time when you write simple statements like {SinOsc.ar}.play.
-SuperCollider unpacks that into (a) the creation of a temporary SynthDef, and (b) the immediate playback of it (thus the names temp_01, temp_02 that you see in the Post window). All of it behind the scenes, for your convenience.
+最初に SynthDef を作成し（一意の名前で）、次に aSynth を呼び出すというこの2段階のプロセスは、{SinOsc.ar} .play のような単純なステートメントを記述するときにSCが常に行うことです。
+SuperColliderは、それを（a）一時的な SynthDef の作成、および（b）即時再生（したがって、Post ウィンドウに表示される temp_01、temp_02 という名前）に解凍（unpacks）します。 あなたの便宜のために、それらはすべて舞台裏で。
 
 ```c++
 // When you do this:
@@ -3276,10 +3279,14 @@ Synth("tempName"); // play it
 ```
 
 ### 40 Pbind can play your SynthDef
-One of the beauties of creating your synths as SynthDefs is that you can use Pbind to play them.
-Assuming the "wow" SynthDef is still loaded in memory (it should, unless you quit and reopened SC after the last example), try the Pbinds below:
+SynthDefs としてシンセを作成することの美しさの1つは、Pbind を使用してそれらを再生できることです。
+ "wow" SynthDef がまだメモリにロードされていると仮定して（最後の例の後でSCを終了して再度開いた場合を除き）、以下の Pbinds を試してください:
+
+
 
 **p-96**
+
+
 
 ```c++
 (
@@ -3310,8 +3317,9 @@ Scale.phrygian], inf)),
 )
 ```
 
-When using Pbind to play one of your custom SynthDefs, just keep in mind the followingpoints:
-• Use the Pbind key \instrument to declare the name of your SynthDef.
+Pbind を使用してカスタム SynthDef の1つを再生するときは、次の点に注意してください:
+
+* Pbind key\instrumentを使用して、あなたの SynthDef の名前を宣言します。
 
 
 
