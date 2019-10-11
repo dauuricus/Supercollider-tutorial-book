@@ -3184,3 +3184,224 @@ SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれら�
 
 最初の引数は使用するシンセ定義の名前で、2番目の（オプション）引数は指定したいパラメーター（ freq、amp など）を持つ配列です。
 
+### 39.2 Example
+Here’s a longer example. After the SynthDef is added, we use an array trick to create a 6-note chord with random pitches and amplitudes. Each synth is stored in one of the slots of the array, so we can release them independently.
+
+**p-93**
+
+```c++
+// Create SynthDef
+(
+SynthDef("wow", {arg freq = 60, amp = 0.1, gate = 1, wowrelease = 3;
+var chorus, source, filtermod, env, snd;
+chorus = freq.lag(2) * LFNoise2.kr([0.4, 0.5, 0.7, 1, 2, 5, 10]).range(1,1.02);
+source = LFSaw.ar(chorus) * 0.5;
+filtermod = SinOsc.kr(1/16).range(1, 10);
+	env = Env.asr(1, amp, wowrelease).kr(2, gate);
+	snd = LPF.ar(in: source, freq: freq * filtermod, mul: env);
+Out.ar(0, Splay.ar(snd))
+}).add;
+)
+
+// Watch the Node Tree
+s.plotTree;
+
+// Create a 6􀀀note chord
+a = Array.fill(6, {Synth("wow", [\freq, rrand(40, 70).midicps, \amp, rrand(0.1, 0.5)
+])}); // all in a single line
+
+// Release notes one by one
+a[0].set(\gate, 0);
+a[1].set(\gate, 0);
+a[2].set(\gate, 0);
+a[3].set(\gate, 0);
+a[4].set(\gate, 0);
+a[5].set(\gate, 0);
+
+// ADVANCED: run 6􀀀note chord again, then evaluate this line.
+// Can you figure out what is happening?
+SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
+```
+
+To help you understand the SynthDef above:
+• The resulting sound is the sum of seven closely-tuned sawtooth oscillators going througha low pass filter.
+• These seven oscillators are created through multichannel expansion.
+
+
+
+**p-94**
+
+
+
+• What is the variable chorus? It is the frequency multiplied by a LFNoise2.kr. Themultichannel expansion starts here, because an array with 7 items is given as an argument to LFNoise2. The result is that seven copies of LFNoise2 are created, each one running at a different speeds taken from the list [0.4, 0.5, 0.7, 1, 2, 5, 10]. Their outputs areconstrained to the range 1.0 to 1.02.
+• The source sound LFSaw.ar takes the variable chorus as its frequency. In a concrete
+example: for a freq value of 60 Hz, the variable chorus would result in an expression like
+
+
+
+```c++
+60  [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
+```
+
+in which the numbers inside the list would be constantly changing up and down according to the speeds of each LFNoise2. The final result is a list of seven frequencies always sliding between 60 and 61.2 (60 * 1.02). This is called chorus effect, thus the variable name.
+• When the variable chorus is used as freq of LFSaw.ar, multichannel expansion happens: we have now seven sawtooth waves with slightly different frequencies.
+• The variable filtermod is just a sine oscillator moving very slowly (1 cycle over 16 seconds), with its output range scaled to 1-10. This will be used to modulate the cutoff frequency of the low pass filter.
+• The variable snd holds the low pass filter (LPF), which takes source as input, and filters out all frequencies above its cutoff frequency. This cutoff is not a fixed valued: it is the expression freq * filtermod. So in the example assuming freq = 60, this becomes a number between 60 and 600. Remember that filtermod is a number oscillating between 1 and 10, so the multiplication would be 60 * (1 to 10).
+
+**p-95**
+
+• LPF also multichannel expands to seven copies. The amplitude envelope env is also applied right there.
+• Finally, Splay takes this array of seven channels and mixes it down to stereo.
+
+### 39.3 Under the hood
+This two-step process of first creating the SynthDef (with a unique name) and then calling aSynth is what SC does all the time when you write simple statements like {SinOsc.ar}.play.
+SuperCollider unpacks that into (a) the creation of a temporary SynthDef, and (b) the immediate playback of it (thus the names temp_01, temp_02 that you see in the Post window). All of it behind the scenes, for your convenience.
+
+```c++
+1 // When you do this:
+2 {SinOsc.ar(440)}.play;
+3 // What SC is doing is this:
+4 {Out.ar(0, SinOsc.ar(440))}.play;
+5 // Which in turn is really this:
+6 SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).play;
+78
+// And all of them are shortcuts to this two􀀀step operation:
+9 SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).add; // create a synth definition
+10 Synth("tempName"); // play it
+```
+
+### 40 Pbind can play your SynthDef
+One of the beauties of creating your synths as SynthDefs is that you can use Pbind to play them.
+Assuming the "wow" SynthDef is still loaded in memory (it should, unless you quit and reopened SC after the last example), try the Pbinds below:
+
+**p-96**
+
+```c++
+(
+Pbind(
+\instrument, "wow",
+\degree, Pwhite(-7, 7),
+\dur, Prand([0.125, 0.25], inf),
+\amp, Pwhite(0.5, 1),
+\wowrelease, 1
+).play;
+)
+
+(
+Pbind(
+\instrument, "wow",
+\scale, Pstutter(8, Pseq([
+Scale.lydian,
+Scale.major,
+Scale.mixolydian,
+Scale.minor,
+Scale.phrygian], inf)),
+\degree, Pseq([0, 1, 2, 3, 4, 5, 6, 7], inf),
+\dur, 0.2,
+\amp, Pwhite(0.5, 1),
+\wowrelease, 4,
+\legato, 0.1
+).play;
+)
+```
+
+When using Pbind to play one of your custom SynthDefs, just keep in mind the followingpoints:
+• Use the Pbind key \instrument to declare the name of your SynthDef.
+
+
+
+**p-97**
+
+
+
+• All the arguments of your SynthDef are accessible and controllable from inside Pbind:
+simply use them as Pbind keys. For example, notice the argument called \wowrelease used above. It is not one of the default keys understood by Pbind—rather, it is unique to the synth definition wow (the silly name was chosen on purpose).
+• In order to use all of the pitch conversion facilities of Pbind (the keys \degree, \note, and \midinote), make sure your SynthDef has an argument input for freq (it has to bespelled exactly like that). Pbind will do the math for you.
+• If using a sustained envelope such as Env.adsr, make sure your synth has a default argument gate = 1 (gate has to be spelled exactly like that, because Pbind uses it behind the scenes to stop notes at the right times).
+• If not using a sustained envelope, make sure your SynthDef includes a doneAction: 2 in an appropriate UGen, in order to automatically free synth nodes in the server.
+
+Exercise: write one or more Pbinds to play the "pluck" SynthDef provided below. For the
+mutedString argument, try values between 0.1 and 0.9. Have one of your Pbinds play a slow sequence of chords. Try arpeggiating the chords with \strum.
+
+```c++
+(
+SynthDef("pluck", {arg amp = 0.1, freq = 440, decay = 5, mutedString = 0.1;
+var env, snd;
+env = Env.linen(0, decay, 0).kr(doneAction: 2);
+snd = Pluck.ar(
+in: WhiteNoise.ar(amp),
+trig: Impulse.kr(0),
+maxdelaytime: 0.1,
+delaytime: freq.reciprocal,
+decaytime: decay,
+coef: mutedString);
+Out.ar(0, [snd, snd]);
+}).add;
+)
+```
+
+**p-98**
+
+
+### 41 Control Buses
+Earlier in this tutorial we talked about Audio Buses (section 30) and the Bus Object (section33). We chose to leave aside the topic of Control Buses at that time in order to focus on the concept of audio routing.
+Control Buses in SuperCollider are for routing control signals, not audio. Except for this difference, there is no other practical or conceptual distinction between audio and control buses.
+You create and manage a control bus the same way you do with audio buses, simply using .kr instead of .ar. SuperCollider has 4096 control buses by default.
+The first part of the example below uses an arbitrary bus number just for the sake of demonstration.The second part uses the Bus object, which is the recommended way of creating buses.
+
+
+```c++
+// Write a control signal into control bus 55
+{Out.kr(55, LFNoise0.kr(1))}.play;
+// Read a control signal from bus 55
+{In.kr(55).poll}.play;
+
+// Using the Bus object
+~myControlBus = Bus.control(s, 1);
+{Out.kr(~myControlBus, LFNoise0.kr(5).range(440, 880))}.play;
+{SinOsc.ar(freq: In.kr(~myControlBus))}.play;
+```
+
+The next example shows a single control signal being used to modulate two different synths atthe same time. In the Blip synth, the control signal is rescaled to control number of harmonicsbetween 1 and 10. In the second synth, the same control signal is rescaled to modulate the frequency of the Pulse oscillator.
+
+
+
+**p-99**
+
+
+
+```c++
+// Create the control bus
+~myControl = Bus.control(s, 1);
+
+// Feed the control signal into the bus
+c = {Out.kr(~myControl, Pulse.kr(freq: MouseX.kr(1, 10), mul: MouseY.kr(0, 1)))}.play;
+
+// Play the sounds being controlled
+// (move the mouse to hear changes)
+(
+{
+	Blip.ar(
+		freq: LFNoise0.kr([1/2, 1/3]).range(50, 60),
+		numharm: In.kr(~myControl).range(1, 10),
+		mul: LFTri.kr([1/4, 1/6]).range(0, 0.1))
+}.play;
+
+{
+	Splay.ar(
+		Pulse.ar(
+			freq: LFNoise0.kr([1.4, 1, 1/2, 1/3]).range(100, 1000) * In.kr(~myControl).range(0.9, 1.1),
+			mul: SinOsc.ar([1/3, 1/2, 1/4, 1/8]).range(0, 0.03))
+)
+}.play;
+)
+
+// Turn off control signal to compare
+c.free;
+```
+
+**p-100**
+
+
+
+
