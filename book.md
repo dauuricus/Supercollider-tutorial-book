@@ -3327,14 +3327,16 @@ Pbind を使用してカスタム SynthDef の1つを再生するときは、次
 
 
 
-• All the arguments of your SynthDef are accessible and controllable from inside Pbind:
-simply use them as Pbind keys. For example, notice the argument called \wowrelease used above. It is not one of the default keys understood by Pbind—rather, it is unique to the synth definition wow (the silly name was chosen on purpose).
-• In order to use all of the pitch conversion facilities of Pbind (the keys \degree, \note, and \midinote), make sure your SynthDef has an argument input for freq (it has to bespelled exactly like that). Pbind will do the math for you.
-• If using a sustained envelope such as Env.adsr, make sure your synth has a default argument gate = 1 (gate has to be spelled exactly like that, because Pbind uses it behind the scenes to stop notes at the right times).
-• If not using a sustained envelope, make sure your SynthDef includes a doneAction: 2 in an appropriate UGen, in order to automatically free synth nodes in the server.
+* SynthDef のすべての引数は、Pbind 内部からアクセスおよび制御できます。
+  それらを Pbind キーとして使用するだけです。 たとえば、上記で使用した \wowrelease という引数に注目してください。**wow** これは Pbind が理解するデフォルトのキーの1つではなく、シンセ定義の固有のキーです（変な名前は意図的に選択されています）。
 
-Exercise: write one or more Pbinds to play the "pluck" SynthDef provided below. For the
-mutedString argument, try values between 0.1 and 0.9. Have one of your Pbinds play a slow sequence of chords. Try arpeggiating the chords with \strum.
+* Pbind のすべてのピッチ変換機能（  \degree、\note、および \midinote のキー）を使用するには、SynthDef に freq の引数入力があることを確認します（そのように正確に入力する必要があります）。 Pbind が計算を行います。
+
+* Env.adsr などサスティーンエンベロープを使用する場合、シンセにデフォルトの引数 gate = 1 が設定されていることを確認してください（ Pbind は舞台裏で適切なタイミングでノートを停止するため、そのように正確に入力する必要があります）。
+
+* サスティーンエンベロープを使用していない場合、SynthDef に適切な UGen に doneAction：2 が含まれていることを確認して、サーバー内のシンセノードを自動的に解放します。
+
+演習：1つ以上の Pbind を作成して、以下に示す "pluck" SynthDef を再生します。 mutedString引数には、0.1〜0.9の値を試してください。 Pbind の1つに、ゆっくりしたコードのシーケンスを再生させます。 \strum で和音をアルペジエイトしてみてください。
 
 ```c++
 (
@@ -3357,10 +3359,11 @@ Out.ar(0, [snd, snd]);
 
 
 ### 41 Control Buses
-Earlier in this tutorial we talked about Audio Buses (section 30) and the Bus Object (section33). We chose to leave aside the topic of Control Buses at that time in order to focus on the concept of audio routing.
-Control Buses in SuperCollider are for routing control signals, not audio. Except for this difference, there is no other practical or conceptual distinction between audio and control buses.
-You create and manage a control bus the same way you do with audio buses, simply using .kr instead of .ar. SuperCollider has 4096 control buses by default.
-The first part of the example below uses an arbitrary bus number just for the sake of demonstration.The second part uses the Bus object, which is the recommended way of creating buses.
+このチュートリアルの前半で、オーディオ bus（セクション30）とバスオブジェクト（セクション33）について説明しました。 オーディオルーティングの概念に焦点を合わせるために、当時のコントロールバスのトピックは別としておきました。
+SuperColliderのコントロール bus は、オーディオではなくコントロール信号をルーティングするためのものです。 この違いを除いて、オーディオ bus とコントロール bus の間に実用的または概念的な違いはありません。
+
+コントロール bus の作成と管理は、オーディオバスで行うのと同じ方法で、.ar の代わりに .kr を使用するだけです。 SuperColliderには、デフォルトで4096個の制御 bus があります。
+以下の例の最初の部分では、デモンストレーションのためだけに任意の bus 番号を使用します。2番目の部分では、 bus の作成に推奨されるBusオブジェクトを使用します。
 
 
 ```c++
@@ -3375,11 +3378,12 @@ The first part of the example below uses an arbitrary bus number just for the sa
 {SinOsc.ar(freq: In.kr(~myControlBus))}.play;
 ```
 
-The next example shows a single control signal being used to modulate two different synths atthe same time. In the Blip synth, the control signal is rescaled to control number of harmonicsbetween 1 and 10. In the second synth, the same control signal is rescaled to modulate the frequency of the Pulse oscillator.
+次の例は、2つの異なるシンセを同時に変調するために使用される単一の制御信号を示しています。 Blip シンセでは、制御信号は1から10までの倍音の数を制御するために再スケーリングされます。2番目のシンセでは、同じ制御信号がパルスオシレータの周波数を変調するために再スケーリングされます。
 
 
 
 **p-99**
+
 
 
 
