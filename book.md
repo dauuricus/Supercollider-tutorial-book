@@ -3185,7 +3185,9 @@ SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれら�
 最初の引数は使用するシンセ定義の名前で、2番目の（オプション）引数は指定したいパラメーター（ freq、amp など）を持つ配列です。
 
 ### 39.2 Example
-Here’s a longer example. After the SynthDef is added, we use an array trick to create a 6-note chord with random pitches and amplitudes. Each synth is stored in one of the slots of the array, so we can release them independently.
+これはもっと長い例です。 SynthDef を追加した後、array トリックを使用して、ランダムなピッチと振幅で6音のコードを作成します。 各シンセはarrayのスロットの1つに格納されているため、個別にリリースできます。
+
+
 
 **p-93**
 
@@ -3206,7 +3208,7 @@ Out.ar(0, Splay.ar(snd))
 // Watch the Node Tree
 s.plotTree;
 
-// Create a 6􀀀note chord
+// Create a 6-note chord
 a = Array.fill(6, {Synth("wow", [\freq, rrand(40, 70).midicps, \amp, rrand(0.1, 0.5)
 ])}); // all in a single line
 
@@ -3223,9 +3225,9 @@ a[5].set(\gate, 0);
 SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
 ```
 
-To help you understand the SynthDef above:
-• The resulting sound is the sum of seven closely-tuned sawtooth oscillators going througha low pass filter.
-• These seven oscillators are created through multichannel expansion.
+上記のSynthDefを理解するために：
+* 結果として得られるサウンドは、ローパスフィルターを通過する7つの厳密に調整されたノコギリ波オシレーターの合計です。
+ * これらの7つのオシレーターは、マルチチャンネル拡張により作成されます。
 
 
 
@@ -3233,9 +3235,9 @@ To help you understand the SynthDef above:
 
 
 
-• What is the variable chorus? It is the frequency multiplied by a LFNoise2.kr. Themultichannel expansion starts here, because an array with 7 items is given as an argument to LFNoise2. The result is that seven copies of LFNoise2 are created, each one running at a different speeds taken from the list [0.4, 0.5, 0.7, 1, 2, 5, 10]. Their outputs areconstrained to the range 1.0 to 1.02.
-• The source sound LFSaw.ar takes the variable chorus as its frequency. In a concrete
-example: for a freq value of 60 Hz, the variable chorus would result in an expression like
+•可変コーラスとは何ですか？ 周波数に LFNoise2.kr を掛けたものです。 7項目の配列がLFNoise2の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
+
+•ソースサウンド LFSaw.ar は、周波数として可変コーラスを使用します。 具体的な例：60 Hzの周波数値の場合、可変コーラスは次のような式になります
 
 
 
@@ -3243,7 +3245,10 @@ example: for a freq value of 60 Hz, the variable chorus would result in an expre
 60 * [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
 ```
 
-in which the numbers inside the list would be constantly changing up and down according to the speeds of each LFNoise2. The final result is a list of seven frequencies always sliding between 60 and 61.2 (60 * 1.02). This is called chorus effect, thus the variable name.
+
+
+リスト内の数値は、各 LFNoise2 の速度に応じて常に上下に変化します。 最終結果は、常に 60〜61.2 （60 * 1.02） の間でスライドする7つの周波数のリストです。 これはコーラス効果と呼ばれます、また変数名です。
+
 • When the variable chorus is used as freq of LFSaw.ar, multichannel expansion happens: we have now seven sawtooth waves with slightly different frequencies.
 • The variable filtermod is just a sine oscillator moving very slowly (1 cycle over 16 seconds), with its output range scaled to 1-10. This will be used to modulate the cutoff frequency of the low pass filter.
 • The variable snd holds the low pass filter (LPF), which takes source as input, and filters out all frequencies above its cutoff frequency. This cutoff is not a fixed valued: it is the expression freq * filtermod. So in the example assuming freq = 60, this becomes a number between 60 and 600. Remember that filtermod is a number oscillating between 1 and 10, so the multiplication would be 60 * (1 to 10).
