@@ -3240,7 +3240,7 @@ example: for a freq value of 60 Hz, the variable chorus would result in an expre
 
 
 ```c++
-60  [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
+60 * [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
 ```
 
 in which the numbers inside the list would be constantly changing up and down according to the speeds of each LFNoise2. The final result is a list of seven frequencies always sliding between 60 and 61.2 (60 * 1.02). This is called chorus effect, thus the variable name.
