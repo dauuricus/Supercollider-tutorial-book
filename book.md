@@ -2916,13 +2916,13 @@ z.free;
 行を実行しながらノードツリーを見てみましょう。
 
 ```c
-1 // doneAction: 2 無しで
-2 {WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
-3 {PlayBuf.ar(1, ~buf1)}.play; // PS. これは、まだ前のセクションを引き継いで ~buf1 にサウンドファイルが読み込まれていることを前提としています
-4
-5// doneAction: 2 を使います
-6 {WhiteNoise.ar(Line.kr(0.2, 0, 2, doneAction: 2))}.play;
-7 {PlayBuf.ar(1, ~buf1, doneAction: 2)}.play;
+// doneAction: 2 無しで
+{WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
+{PlayBuf.ar(1, ~buf1)}.play; // PS. これは、まだ前のセクションを引き継いで ~buf1 にサウンドファイルが読み込まれていることを前提としています
+
+// doneAction: 2 を使います
+{WhiteNoise.ar(Line.kr(0.2, 0, 2, doneAction: 2))}.play;
+{PlayBuf.ar(1, ~buf1, doneAction: 2)}.play;
 ```
 
 
@@ -3258,16 +3258,16 @@ This two-step process of first creating the SynthDef (with a unique name) and th
 SuperCollider unpacks that into (a) the creation of a temporary SynthDef, and (b) the immediate playback of it (thus the names temp_01, temp_02 that you see in the Post window). All of it behind the scenes, for your convenience.
 
 ```c++
-1 // When you do this:
-2 {SinOsc.ar(440)}.play;
-3 // What SC is doing is this:
-4 {Out.ar(0, SinOsc.ar(440))}.play;
-5 // Which in turn is really this:
-6 SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).play;
-78
+// When you do this:
+{SinOsc.ar(440)}.play;
+// What SC is doing is this:
+{Out.ar(0, SinOsc.ar(440))}.play;
+// Which in turn is really this:
+SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).play;
+
 // And all of them are shortcuts to this two􀀀step operation:
-9 SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).add; // create a synth definition
-10 Synth("tempName"); // play it
+SynthDef("tempName", {Out.ar(0, SinOsc.ar(440))}).add; // create a synth definition
+Synth("tempName"); // play it
 ```
 
 ### 40 Pbind can play your SynthDef
