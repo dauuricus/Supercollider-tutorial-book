@@ -894,7 +894,7 @@ Pbind は、音度（主音との音程に従って、番号を振ったもの�
 
  
 
-![1569208590557](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1569208590557.png) 
+![Figure02](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure02.png) 
 
 図2：音階、ノート番号、ミディノット、および周波数の比較
 
@@ -1561,7 +1561,7 @@ var myDurs = Pseq([Pn(1,5),3,Pn(1,5),3,Pn(1,6),1/2,1/2,1,1,3,1,3] ,inf)* 0.4;
 
 
 
-![Pbind counterpoint with a Tchaikovsky melody](C:\Users\sa0ss\Downloads\sounds\Pbind counterpoint with a Tchaikovsky melody.PNG)
+![Figure03](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure03.png)
 
 図3 pbind Tchaikovsky melodyの対位法：
 
@@ -1615,7 +1615,7 @@ ERROR: Message ’bark’ not understood.
 
 
 
-![animal](C:\Users\sa0ss\Downloads\sounds\supercollider\animal.PNG)
+![Figure04](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure04.png)
 
 図4 Hypothetical class hierarchy.
 
@@ -1973,7 +1973,7 @@ case
 
 同じタスクを数回実行していることに気付いたら、再利用可能な関数を作成するのがよいかもしれません。 関数は、"エンクロージャー"セクションで学習したように、中括弧内に記述されたものです。 David Touretzky は、次のように関数の概念を紹介しています。"関数は、データが流れるボックスとして考えてください。 関数は何らかの方法でデータを操作し、その結果が流出します。"*
 
-![function](C:\Users\sa0ss\Downloads\sounds\supercollider\function.PNG)
+![Figure05](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure05.png)
 
  図5：関数の一般的な考え方。
 
@@ -2245,7 +2245,7 @@ SuperCollider IDEでヘルプファイルを探索する他の方法は、"Brows
 
 最初に括弧を開いて特定のメソッドに引数を追加すると、SCは小さな"ツールヒントヘルプ"を表示して、予想される引数が何であるかを示します。 たとえば、図6に表示される行の先頭を入力します。最初のかっこを開いた直後に、SinOsc.arの引数がfreq,phase,mul, および add であることを示すツールチップが表示されます。 また、デフォルト値が何であるかを示しています。 これは、SinOscヘルプファイルから取得する情報とまったく同じです。 ツールチップが消えた場合は、[ctrl + Shift + Space] で元に戻すことができます。 
 
-  ![1570289368565](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1570289368565.png)
+  ![Figure06](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure06.png)
 
 図6：入力すると役立つ情報が表示されます 
 
@@ -2489,7 +2489,7 @@ range メソッドは、単に UGen の出力を再スケーリングします�
 
 図7は、UGen 出力の再スケーリングにおける mul および add の動作を視覚化するのに役立ちます（SinOsc がデモとして使用されます）。
 
-![Scaling UGen ranges](C:\Users\sa0ss\Downloads\sounds\supercollider\Scaling UGen ranges.PNG)
+![Figure07](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure07.png)
 
 図7: mul と add による UGen スケーリングレンジ 
 
@@ -2564,7 +2564,7 @@ x.free;
 
 *セクション41でコント―ロール bus を簡単に見ていきます。
 
-![Audio buses and Meter window](C:\Users\sa0ss\Downloads\sounds\supercollider\Audio buses and Meter window.png)
+![Figure08](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure08.png)
 
 図8：SCのオーディオ bus とメーターウィンドウ
 
@@ -3506,7 +3506,7 @@ m.set(\amp, 0.1);
 **p-102**
 
 
-
+![Figure09](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure09.png)
 Figure 9: Synth nodes in the Node Tree window
 
 サンプルをもう一度実行して、行 m、f、および n を逆の順序で評価しようとすると、信号が間違った順序で計算されるため、何も聞こえません。
