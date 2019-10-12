@@ -10,6 +10,8 @@ https://creativecommons.org/licenses/by-sa/4.0/deed.ja
 
 ![coverart](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/f6e53a53-af4d-401b-b965-5a26e3e6d352.png?raw=true)
 
+![cover](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/cat-window-3.png)
+
 ------
 
  **サンタクララ大学**
@@ -1561,7 +1563,7 @@ var myDurs = Pseq([Pn(1,5),3,Pn(1,5),3,Pn(1,6),1/2,1/2,1,1,3,1,3] ,inf)* 0.4;
 
 
 
-![Figure03](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure03.png)
+![Figure03](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure03.PNG)
 
 図3 pbind Tchaikovsky melodyの対位法：
 
@@ -1615,7 +1617,7 @@ ERROR: Message ’bark’ not understood.
 
 
 
-![Figure04](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure04.png)
+![Figure04](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure04.PNG)
 
 図4 Hypothetical class hierarchy.
 
@@ -1973,7 +1975,7 @@ case
 
 同じタスクを数回実行していることに気付いたら、再利用可能な関数を作成するのがよいかもしれません。 関数は、"エンクロージャー"セクションで学習したように、中括弧内に記述されたものです。 David Touretzky は、次のように関数の概念を紹介しています。"関数は、データが流れるボックスとして考えてください。 関数は何らかの方法でデータを操作し、その結果が流出します。"*
 
-![Figure05](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure05.png)
+![Figure05](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure05.PNG)
 
  図5：関数の一般的な考え方。
 
@@ -2245,8 +2247,7 @@ SuperCollider IDEでヘルプファイルを探索する他の方法は、"Brows
 
 最初に括弧を開いて特定のメソッドに引数を追加すると、SCは小さな"ツールヒントヘルプ"を表示して、予想される引数が何であるかを示します。 たとえば、図6に表示される行の先頭を入力します。最初のかっこを開いた直後に、SinOsc.arの引数がfreq,phase,mul, および add であることを示すツールチップが表示されます。 また、デフォルト値が何であるかを示しています。 これは、SinOscヘルプファイルから取得する情報とまったく同じです。 ツールチップが消えた場合は、[ctrl + Shift + Space] で元に戻すことができます。 
 
-  ![Figure06](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure06.png)
-
+  ![Figure06](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure06.PNG)
 図6：入力すると役立つ情報が表示されます 
 
 別のショートカット：引数に明示的に名前を付けたい場合 ( SinOsc.ar(freq：890) など )、括弧を開いた直後にタブキーを押してみてください。 SCは入力時に正しい引数名を順番に入力します(後続の引数名のコンマの後にタブを押します)。
@@ -2489,7 +2490,7 @@ range メソッドは、単に UGen の出力を再スケーリングします�
 
 図7は、UGen 出力の再スケーリングにおける mul および add の動作を視覚化するのに役立ちます（SinOsc がデモとして使用されます）。
 
-![Figure07](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure07.png)
+![Figure07](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure07.PNG)
 
 図7: mul と add による UGen スケーリングレンジ 
 
