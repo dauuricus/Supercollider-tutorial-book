@@ -324,7 +324,7 @@ Contents
  **p-1**
 
 <div style="page-break-before:always"></div> 
-![Figure 1:](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure01.png)
+![Figure01](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure01.png)
 図1：SuperCollider IDEインターフェース。
 
 | ヒント：                                                     |
