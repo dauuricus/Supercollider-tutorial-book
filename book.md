@@ -3722,7 +3722,7 @@ computer
 
 他のユーザーが作成したクラスと UGen を追加することにより、SuperCollider の機能を拡張できます。 Quark は SuperCollider クラスのパッケージであり、SuperCollider 言語でできることを拡張しています。 UGen プラグインは、SuperCollider オーディオ合成サーバーの拡張機能です。
 
-SuperColliderインストールにプラグインと Quark を追加する方法のを知るには、http：//supercollider.sourceforge.net/ にアクセスしてください。 「Using Quarks」ヘルプファイルも出発点として適切です：
+SuperCollider インストールにプラグインと Quark を追加する方法のを知るには、http：//supercollider.sourceforge.net/ にアクセスしてください。「Using Quarks」ヘルプファイルも出発点として適切です：
 
 http://doc.sccode.org/Guides/UsingQuarks.html 
 
@@ -3731,9 +3731,10 @@ SuperCollider ドキュメントから、Quarks.gui を評価して、使用可�
 ### 46 Extra Resources
 
 This is the end of this introduction to SuperCollider. A few extra learning resources are listed below. Enjoy!
-• An excellent series of YouTube tutorials by Eli Fieldsteel: http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
-• The standard SC get-started tutorial by Scott Wilson and James Harkins, available online and in the built-in Help files: http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
-• The official SuperCollider mailing list is the best way to get friendly help from a large pool of users. Beginners are very welcome to ask questions in this list. You can sign up here: http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
+
+* An excellent series of YouTube tutorials by Eli Fieldsteel: http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
+* The standard SC get-started tutorial by Scott Wilson and James Harkins, available online and in the built-in Help files: http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
+* The official SuperCollider mailing list is the best way to get friendly help from a large pool of users. Beginners are very welcome to ask questions in this list. You can sign up here: http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
 
 
 
@@ -3741,15 +3742,17 @@ This is the end of this introduction to SuperCollider. A few extra learning reso
 
 
 
-• Find a SuperCollider meet-up group in your city. The official sc-users mailing list is the best way to find out if there is one where you live. If there is no meet-up group in your area, start one!
-• Lots of interesting snippets of code can be found here:
+* Find a SuperCollider meet-up group in your city. The official sc-users mailing list is the best way to find out if there is one where you live. If there is no meet-up group in your area, start one!
 
- http://sccode.org/
+* Lots of interesting snippets of code can be found here:
 
-Sign up for an account and share your code too.
-• Have you heard of SuperCollider tweets?
+  http://sccode.org/
 
- http://supercollider.sourceforge.net/sc140/
+  Sign up for an account and share your code too.
+
+* Have you heard of SuperCollider tweets?
+
+  http://supercollider.sourceforge.net/sc140/
 
 
 
@@ -3791,7 +3794,3 @@ range is 0-1 (in fact, LFPulse in particular only outputs zeros or ones, nothing
 
 
 **p-114**
-
-
-
-
