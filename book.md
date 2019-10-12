@@ -324,7 +324,7 @@ Contents
  **p-1**
 
 <div style="page-break-before:always"></div> 
-![1569208635624](C:\Users\sa0ss\AppData\Roaming\Typora\typora-user-images\1569208635624.png)
+![](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure01.png)
 図1：SuperCollider IDEインターフェース。
 
 | ヒント：                                                     |
