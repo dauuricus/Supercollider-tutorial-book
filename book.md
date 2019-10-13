@@ -49,7 +49,7 @@ Part of the [Composition Commons](http://network.bepress.com/arts-and-humanities
 
  この本は、Scholar Commonsが無料でオープンアクセスで提供しています。 Scholar Commonsの認定管理者により、Faculty Book Galleryへの掲載が認められています。 詳細については、 rscroggin @ scu.eduにお問い合わせください 。
 
-![1569163002975.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/d258b0a8-229b-8821-6af4-2ca3b8021549.png)
+![SuperCollider-cover](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/SuperCollider-cover.png)
   
 
 #  SuperColliderの優しい紹介
