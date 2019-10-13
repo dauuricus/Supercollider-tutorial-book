@@ -10,7 +10,6 @@ https://creativecommons.org/licenses/by-sa/4.0/deed.ja
 
 ![coverart](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/f6e53a53-af4d-401b-b965-5a26e3e6d352.png?raw=true)
 
-![cover](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/cat-window-3.png)
 
 ------
 
