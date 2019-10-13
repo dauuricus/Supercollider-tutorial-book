@@ -3629,7 +3629,7 @@ MIDIdef.noteOn(\quneo, {arg vel, note; a.play});
 
 
 
-そのためには、SuperColliderは単に各キーに対応するシンセノードを追跡する必要があります。 次の例に示すように、そのために配列を使用できます。
+そのためには、SuperCollider は単に各キーに対応するシンセノードを追跡する必要があります。 次の例に示すように、そのために配列を使用できます。
 
 ```c++
 // A SynthDef with ADSR envelope
@@ -3654,7 +3654,7 @@ MIDIdef.noteOff(\myKeyUp, {arg vel, note;
 	["NOTE OFF", note].postln;
 });
 )
-// PS. Make sure SC MIDI connections are made (MIDIIn.connectAll)
+// PS. SC MIDI接続が行われていることを確認してください(MIDIIn.connectAll)
 ```
 
 上記のコードを理解するために：
@@ -3673,7 +3673,7 @@ p-108
 
 * キーがリリースされるたびに、メッセージ .set(\gate,0) が適切なシンセノードに送信され、ノート番号によって配列から取得されます。
 
-この短いMIDIデモでは、SuperColliderへのMIDIの導入についてのみ説明しました。 SuperColliderからMIDIメッセージを取得するには、MIDIOutヘルプファイルをご覧ください。
+この短いMIDIデモでは、SuperCollider へのMIDIの導入についてのみ説明しました。 SuperColliderか らMIDIメッセージを取得するには、MIDIOut ヘルプファイルをご覧ください。
 
 ### 44 OSC
 
@@ -3724,19 +3724,17 @@ computer
 
 他のユーザーが作成したクラスと UGen を追加することにより、SuperCollider の機能を拡張できます。 Quark は SuperCollider クラスのパッケージであり、SuperCollider 言語でできることを拡張しています。 UGen プラグインは、SuperCollider オーディオ合成サーバーの拡張機能です。
 
-SuperCollider インストールにプラグインと Quark を追加する方法のを知るには、http：//supercollider.sourceforge.net/ にアクセスしてください。「Using Quarks」ヘルプファイルも出発点として適切です：
-
-http://doc.sccode.org/Guides/UsingQuarks.html 
+SuperColliderインストールにプラグインと Quark を追加する方法のを知るには、http：//supercollider.sourceforge.net/ にアクセスしてください。 「Using Quarks」ヘルプファイルも出発点として適切です。http://doc.sccode.org/Guides/UsingQuarks.html 
 
 SuperCollider ドキュメントから、Quarks.gui を評価して、使用可能なすべてのクォークのリストを表示できます（新しいウィンドウで開きます）。
 
-### 46 Extra Resources
+### 46 追加リソース
 
-This is the end of this introduction to SuperCollider. A few extra learning resources are listed below. Enjoy!
+これで、SuperCollider の紹介は終わりです。 いくつかの追加学習リソースを以下にリストします。Enjoy!
 
-* An excellent series of YouTube tutorials by Eli Fieldsteel: http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
-* The standard SC get-started tutorial by Scott Wilson and James Harkins, available online and in the built-in Help files: http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
-* The official SuperCollider mailing list is the best way to get friendly help from a large pool of users. Beginners are very welcome to ask questions in this list. You can sign up here: http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
+* Eli Fieldsteel による優れたYouTubeチュートリアルシリーズ。http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
+* Scott WilsonとJames Harkinsによる標準のSC開始チュートリアルは、オンラインおよび組み込みのヘルプファイルで利用できます。http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
+* 公式のSuperColliderメーリングリストは、多数のユーザーから友好的な助けを得るための最良の方法です。 初心者の方はこのリストの質問を歓迎します。 こちらからサインアップできます。 http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
 
 
 
@@ -3744,16 +3742,14 @@ This is the end of this introduction to SuperCollider. A few extra learning reso
 
 
 
-* Find a SuperCollider meet-up group in your city. The official sc-users mailing list is the best way to find out if there is one where you live. If there is no meet-up group in your area, start one!
+* あなたの街で SuperCollider ミートアップグループを見つけてください。 公式の sc-users（スーパーコライダーユーザーズ）メーリングリストは、あなたが住んでいる場所があるかどうかを知る最良の方法です。 お住まいの地域にミートアップグループがない場合は、グループを始めてください！
 
-* Lots of interesting snippets of code can be found here:
+* たくさんの興味深いコードスニペットがここにあります。
 
-  http://sccode.org/
+   http://sccode.org/ 
+  アカウントにサインアップして、コードも共有してください。
 
-  Sign up for an account and share your code too.
-
-* Have you heard of SuperCollider tweets?
-
+* SuperCollider のツイートを聞いたことがありますか？
   http://supercollider.sourceforge.net/sc140/
 
 
@@ -3764,34 +3760,48 @@ p-112
 
 ### Notes
 
-1 First question: when you use the number 1 instead of inf as the repeats argument of the second Pseq, the Pbind will stop after 6 notes have been played (that is, after one full sequence of duration values has been performed). Second question: to make a Pbind play forever, simply use inf as the repeats value of all inner patterns.
-2
-a) Pwhite(0, 10) will generate any number between 0 and 10. Prand([0, 4, 1, 5, 9, 10, 2, 3], inf) will only pick from the list, which has some numbers between 0 and 10, but not all (6, 7, 8 are not there, so they will never occur in this Prand).
-b) Technically you could use a Prand if you provide a list with all numbers between 0 and 100, but it makes more sense to use a Pwhite for this task: Pwhite(0, 100).
-c) Prand([0, 1, 2, 3], inf) picks items from the list at random. Pwhite(0, 3) arrives at the same kind of output through different means: it will generate random integer numbers between 0 and 3, which ends up being the same pool of options than the Prand above. However, if you write Pwhite(0, 3.0), the output is now different:
-because one of the input arguments of Pwhite is written as a float (3.0), it will now output any floating point number between 1 and 3, like 0.154, 1.0, 1.45, 2.999.
-d) The first Pbind plays 32 notes (4 times the sequence of 8 notes). The second Pbind plays only 4 notes: four random choices picked from the list (remember that Prand, unlike Pseq, has no obligation to play all the notes from the list: it will simply pick as many random notes as you tell it to). The third and last Pbind plays 32 notes,
-like the first.
-3 First line: the Array [1, 2, 3, "wow"] is the receiving object; reverse is the message. Second line: the String "hello" is the receiving object; dup is the message; 4 is the argument to dup. Third line: 3.1415 is the receiving object; round is the message; 0.1 is the argument to round. Fourth line: 100 is the receiver object,
-rand is the message. Last line: 100.0 is the receiver of the message rand, the result of which is a random number between 0 and 100. That number becomes the receiver of the message round with argument 0.01, so that the random number is rounded to two decimal cases. Then this result becomes the receiving object of the message
-dup with argument 4, which creates a list with four duplicates of that number.
-4 Rewriting using functional notation only: dup(round(rand(100.0), 0.01), 4);
-5 Answers:
-a) 24
+1. 最初の質問：2番目の Pseq の繰り返し引数として inf の代わりに数値1を使用すると、Pbind は6つのノートが演奏された後（つまり、デュレーション値の完全なシーケンスが実行された後）に停止します。 2番目の質問：Pbind を永遠にプレイするには、すべての内部パターンの繰り返し値として inf を使用します。
 
-**p-113**
+2. ​	a）Pwhite(0, 10) は、0から10までの任意の数を生成します。Prand([0, 4, 1, 5, 9, 10, 2, 3], inf) は、いくつかの数を持つリストからのみ選択します 0から10の間ですが、すべてではありません（6、7、8が存在しないため、このPrandには発生しません）。
 
-b) [5; 5:123] [both numbers and brackets)
-c) Entire LFSaw line
-d) Only one
-e) 0.4
-f) 1 and 0.3
-6 SinOsc is bipolar because it outputs numbers between -1 and +1. LFPulse is unipolar because its output
-range is 0-1 (in fact, LFPulse in particular only outputs zeros or ones, nothing in between)
-7 Solution: a = {Out.ar(0, SinOsc.ar(freq: [800, 880], mul: LFPulse.ar([2, 3])))}.play;
-8 (a) The variable lfn simply holds a LFNoise2. The role of LFNoise2 in life is to generate a new random number every second (between -1 and +1), and slide to it from the previous random number (differently from LFNoise0, that jumps to the new number immediately). The first use of this variable lfn is in the freq argument of the BPF: lfn.range(500, 2500). This takes the numbers between -1 and +1 and scales them to the range 500-2500. These numbers are then used as the center frequency of the filter. These frequencies are the pitches that we hear sliding up and down. Finally, lfn is used again to control the position of the panner Pan2. It is used directly (without a .range message) because the numbers are already in the range we want (-1 to +1). The nice result of this is that we couple the change of frequency with the change of position. How? Every second, LFNoise2 starts to slide toward a new random number, and this becomes a synchronized change in frequency of the filter and panning position. If we had two different LFNoise2 in each place, the changes would be uncorrelated (which might be fine too, but it’s a different aural result).
-(b) a mul: of 1 would just be too soft. Because the filter is so sharp, it takes so much out of the original signal that the amplitude drops too much. We need to boost the signal back to a reasonably audible range, so that’s why we have mul: 20 at the end of the BPF line.
-(c) The rhythm is driven by the LFPulse that is the mul: argument of the Saw. LFPulse frequency (how many pulses per second) is controlled by an LFNoise1 that produces numbers between 1 and 10 (interpolating between them). Those numbers are the “how many notes per second” of this patch.
+   ​	b）技術的には、0から100までのすべての数字のリストを提供する場合、Prand を使用できますが、このタスクに Pwhite を使用する方が合理的です：Pwhite(0, 100)。
+
+   ​	c）Prand([0, 1, 2, 3], inf) は、リストからアイテムをランダムに選択します。 Pwhite(0, 3) は、異なる方法で同じ種類の出力に到達します。0〜3の整数の乱数を生成します。これは、上の Prand と同じオプションのプールになります。 ただし、Pwhite(0, 3.0) を記述すると、出力が異なります。
+   Pwhiteの入力引数の1つはfloat(3.0)として書き込まれるため、0.154、1.0、1.45、2.999など、1〜3の浮動小数点数を出力するようになりました。
+
+   ​	d）最初の Pbind は32音（8音のシーケンスの4倍）を演奏します。 2番目の Pbind は4つのノートのみを再生します：リストから選択された4つのランダムな選択肢（ Pseq とは異なり、Prand はリストからすべてのノートを再生する義務を負わないことを思い出してください。 3番目と最後の Pbind は、最初と同様に32音を演奏します。
+
+3. 最初の行：配列 [1, 2, 3, "wow"] は受信オブジェクトです。 メッセージは逆です。 2行目：文字列「hello」は受信オブジェクトです。 dup はメッセージです。 4は dup の引数です。 3行目：3.1415は受信オブジェクトです。 round はメッセージです。 0.1は丸めの引数です。 4行目：100はレシーバオブジェクトです。
+   randはメッセージです。 最終行：100.0はメッセージrandの受信者であり、その結果は0から100の間の乱数です。その数値は引数0.01でメッセージ round の受信者になるため、乱数は2つの10進数の場合に丸められます。 次に、この結果がメッセージの受信オブジェクトになります
+   引数4の dup は、その番号の4つの重複を持つリストを作成します。
+
+4. 関数表記のみを使用した書き換え：
+
+   ```c++
+   dup(round(rand(100.0)、0.01),4);
+   ```
+
+5. こたえ:
+   a) 24
+   b) [5; 5:123] [数字と括弧の両方)
+   c) LFSaw ライン全体
+   d) Only one
+   e) 0.4
+   f) 1 と 0.3
+
+6. SinOsc は、-1〜+1の数値を出力するため、バイポーラです。 LFPulse は出力範囲が0-1であるため、ユニポーラです（実際、LFPulse は特に0または1のみを出力し、その間には何もありません）
+
+7. ソリューション: 
+
+   ```c++
+   a = {Out.ar(0, SinOsc.ar(freq: [800, 880], mul: LFPulse.ar([2, 3])))}.play;
+   ```
+
+8. ​	(a) 変数 lfn は、単に LFNoise2 を保持します。LFNoise2 の役割は、毎秒（-1から+1まで）新しい乱数を生成し、前の乱数からスライドさせて（すぐに新しい番号にジャンプする LFNoise0 とは異なります）することです。この変数 lfn の最初の使用は、BPFの freq 引数にあります：lfn.range(500, 2500) 。これは、-1から+1までの数値を取り、それらを500〜2500の範囲にスケーリングします。これらの数値は、フィルターの中心周波数として使用されます。これらの周波数は、上下にスライドする音です。最後に、再度 lfn を使用して、panner Pan2 の位置を制御します。数値は既に必要な範囲（-1〜+1）にあるため、（ .range メッセージなしで）直接使用されます。これの良い結果は、周波数の変化を位置の変化と結びつけることです。どうやって？ LFNoise2 は1秒ごとに新しい乱数に向かってスライドし始め、これがフィルターの周波数とパン位置の同期した変化になります。各場所に2つの異なる LFNoise2 がある場合、変更は無相関になります（これも問題ないかもしれませんが、異なる聴覚の結果です）。
+
+   ​	(b) mul: of 1は、あまりにもソフトすぎます。 フィルターは非常にシャープであるため、元の信号から非常に多くを取り去り、振幅が大幅に低下します。 信号を適度に聞こえる範囲に戻す必要があるため、BPFラインの最後に mul: 20 があります。
+
+   ​	(c) リズムは、sawのmul: 引数である LFPulse によって駆動されます。 LFPulse 周波数（1秒あたりのパルス数）は、1〜10の数値を生成する LFNoise1 によってコントロールされます（それらの間を補間します）。 これらの数値は、このパッチの「1秒あたりのノート数」です。
 
 
 
