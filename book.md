@@ -8,7 +8,6 @@ This work is licensed under the Creative Commons
 Attribution-ShareAlike 4.0 International License.
 https://creativecommons.org/licenses/by-sa/4.0/deed.ja
 
-![coverart](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/f6e53a53-af4d-401b-b965-5a26e3e6d352.png?raw=true)
 
 
 ------
