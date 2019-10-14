@@ -322,8 +322,7 @@ Contents
 
 
  **p-1**
-
-<div style="page-break-before:always"></div> 
+ 
 
 ![Figure01](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure01.png)
 図1：SuperCollider IDEインターフェース。
@@ -340,7 +339,7 @@ SuperCollider IDEとは何ですか？ これは、"SuperCollider専用に開発
 
  **p-2**
 
-<div style="page-break-before:always"></div>
+
 SCウィンドウに表示される主な部分は、コードエディター、ヘルプブラウザー、およびPost ウィンドウです。 SuperColliderを開いたときにこれらのいずれも表示されない場合は、メニューに移動します。
 
 View→Docklets (そこから各ドックレットを表示または非表示にできます)。 ステータスバーもあり、常にウィンドウの右下隅にあります。そこにプリントされているものすべてをまだ理解していない場合でも、常に Post ウィンドウを表示したままにします。 Post ウィンドウには、コマンドに対するプログラムの応答(コード評価の結果、さまざまな通知、警告、エラーなど)が表示されます。
@@ -357,7 +356,7 @@ SuperCollider は実際には、サーバーと言語の2つの異なるアプ�
 
 ------
 
-*SuperCollider ドキュメントから引用： [http](https://translate.googleusercontent.com/translate_c?depth=1&hl=ja&rurl=translate.google.com&sl=en&sp=nmt4&tl=ja&u=https://www.google.com/url%3Fq%3Dhttp://doc.sccode.org/Guides/SCIde.html%26sa%3DD%26ust%3D1568980532117000&xid=17259,1500003,15700021,15700186,15700191,15700256,15700259,15700262,15700265&usg=ALkJrhhI-oz_2-r-GOndY-3n_5r73wYV7Q)://doc.sccode.org/Guides/SCIde.html IDEインターフェースの詳細については、そのページをご覧ください。
+*SuperCollider ドキュメントから引用：http://doc.sccode.org/Guides/SCIde.html IDEインターフェースの詳細については、そのページをご覧ください。
 
  
 
@@ -389,7 +388,7 @@ SuperCollider は実際には、サーバーと言語の2つの異なるアプ�
 
  **p-4**
 
-<div style="page-break-before:always"></div>
+
 ```c
 {SinOsc.ar}.play;
 ```
