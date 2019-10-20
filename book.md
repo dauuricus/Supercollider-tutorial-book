@@ -3016,7 +3016,7 @@ Env.linen は、アタック、サステイン部分、およびリリースを�
 Env.linen.plot; 
 // これを聴いて: 
 SinOsc.ar([300, 350], mul: Env.linen(0.01, 2, 1,
-0.2).kr(2)).play;
+0.2).kr(2))}.play;
 ```
 
 
@@ -3211,7 +3211,7 @@ SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれら�
 (
 SynthDef("wow", {arg freq = 60, amp = 0.1, gate = 1, wowrelease = 3;
 var chorus, source, filtermod, env, snd;
-chorus = freq.lag(2) * LFNoise2.kr([0.4, 0.5, 0.7, 1, 2, 5, 10]).range(1,1.02);
+chorus = Lag.kr(freq,2) * LFNoise2.kr([0.4, 0.5, 0.7, 1, 2, 5, 10]).range(1,1.02);
 source = LFSaw.ar(chorus) * 0.5;
 filtermod = SinOsc.kr(1/16).range(1, 10);
 	env = Env.asr(1, amp, wowrelease).kr(2, gate);
@@ -3237,7 +3237,7 @@ a[5].set(\gate, 0);
 
 // ADVANCED: 6音のコードを再度実行して、この行を評価します.
 // 何が起きているのか理解できますか？
-SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
+SystemClock.sched(0, {a[5.rand].set(\freq, rrand(40, 70).midicps); rrand(3, 10)});
 ```
 
 上記の SynthDef を理解するために：
@@ -3251,6 +3251,8 @@ SystemClock.sched(0, {a[5.rand].set(\midinote, rrand(40, 70)); rrand(3, 10)});
 
 
 * 変数 chorus とは何ですか？ 周波数に LFNoise2.kr を掛けたものです。 7項目の配列が LFNoise2 の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
+
+* As an extra feature, notice that freq is enclosed within a Lag.kr. Whenever a new frequency value is fed into this Synth, the Lag UGen simply creates a ramp between the old value and the new value. The "lag time" (duration of the ramp), in this case, is 2 seconds. This is what causes the glissando effect you hear after running the last line of the example.
 
 * ソースサウンド LFSaw.ar は、周波数として変数 chorus を使用します。 具体的な例：60 Hzの周波数値の場合、変数 chorus は次のような式になります
 
@@ -3734,6 +3736,8 @@ SuperCollider ドキュメントから、Quarks.gui を評価して、使用可�
 
 * Eli Fieldsteel による優れたYouTubeチュートリアルシリーズ。http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
 * Scott WilsonとJames Harkinsによる標準のSC開始チュートリアルは、オンラインおよび組み込みのヘルプファイルで利用できます。http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
+* Nick Collins’ online tutorial: http://composerprogrammer.com/teaching/supercollider/
+sctutorial/tutorial.html
 * 公式のSuperColliderメーリングリストは、多数のユーザーから友好的な助けを得るための最良の方法です。 初心者の方はこのリストの質問を歓迎します。 こちらからサインアップできます。 http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
 
 
@@ -3750,7 +3754,7 @@ SuperCollider ドキュメントから、Quarks.gui を評価して、使用可�
   アカウントにサインアップして、コードも共有してください。
 
 * SuperCollider のツイートを聞いたことがありますか？
-  http://supercollider.sourceforge.net/sc140/
+  http://supercollider.github.io/community/sc140.html
 
 
 
