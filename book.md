@@ -11,7 +11,7 @@ https://creativecommons.org/licenses/by-sa/4.0/deed.ja
 
 
 ------
-
+First published in 2014. This revision is from November 20, 2015.
 ------
 
 #  SuperColliderの優しい紹介(第2版)
