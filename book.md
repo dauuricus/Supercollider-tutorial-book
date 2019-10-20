@@ -31,7 +31,7 @@ First published in 2014. This revision is from November 20, 2015.
 ### 翻訳　[ねことほんだな](https://twitter.com/l_o_0_0_o_1/status/1181474516045725696)
 
 
- ![1569163432316.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png)
+ ![creativecommon](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/copy.png)
 
 
 
