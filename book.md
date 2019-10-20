@@ -21,7 +21,7 @@ First published in 2014. This revision is from November 20, 2015.
  **ブルーノ・ルヴィアーロ**
 
 ![SuperCollider-cover](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/SuperCollider(cover).png)
-  
+
 
 #  SuperColliderの優しい紹介
 
@@ -43,14 +43,13 @@ First published in 2014. This revision is from November 20, 2015.
 
 
 [TOC]
-  
+
 
 **SuperColliderの優しい紹介**
 
  ブルーノ・ルヴィアーロ
 
 2015年11月20日
-
 
 -----
 
@@ -64,7 +63,7 @@ First published in 2014. This revision is from November 20, 2015.
 
 あなたの前で、新しいドキュメントを開き(menu File→New, もしくはショートカット [ctrl+N]) 、次の行を入力します。
 
-```c
+```supercollider
 "Hello World".postln;
 ```
 
@@ -73,7 +72,7 @@ First published in 2014. This revision is from November 20, 2015.
 
 
  **p-1**
- 
+
 
 ![Figure01](https://github.com/dauuricus/Supercollider-tutorial-book/blob/master/github-images/Figure01.png)
 図1：SuperCollider IDEインターフェース。
@@ -140,13 +139,13 @@ SuperCollider は実際には、サーバーと言語の2つの異なるアプ�
  **p-4**
 
 
-```c
+```supercollider
 {SinOsc.ar}.play;
 ```
 
 それは美しく、滑らかで、連続的で、おそらく少し退屈なサイン波です。 [ctrl +.]でサウンドを停止できます(コントロールキーとピリオドキーです)。このキーの組み合わせを覚えておいてください。SCのすべてのサウンドを停止するために頻繁に使用するためです。次に、この正弦波をもう少し面白くしましょう。 これを入力してください：
 
-```c
+```supercollider
 {SinOsc.ar(LFNoise0.kr(10).range(500, 1500), mul: 0.1)}.play;
 ```
 
@@ -160,7 +159,7 @@ SuperCollider は実際には、サーバーと言語の2つの異なるアプ�
 
 最後の例を評価しても音がしませんか？ その場合、コードにタイプミスがあった可能性があります。間違った文字、カンマや括弧の欠落などです。コードに問題が発生すると、Post ウィンドウにエラーメッセージが表示されます。 エラーメッセージは長くて不可解なことがありますが、パニックにならないでください。時間の経過とともにエラーメッセージの読み方を学びます。 短いエラーメッセージは次のようになります。
 
-```c
+```supercollider
 ERROR: Class not defined.
 	in file ’selected text’
 	line 1 char 19:
@@ -187,7 +186,7 @@ nil
 
 SuperCollider Bookの最初の章から改作された素晴らしい例があります。*前の例と同様に、すべてを理解しようとして心配する必要はありません。 音の結果を楽しんで、数字で遊んでください。
 
-```c
+```supercollider
  {RLPF.ar(Dust.ar([12, 15]), LFNoise1.ar([0.3, 0.2]).range(100, 3000), 0.02)}.play;
 ```
 
@@ -215,7 +214,7 @@ SuperCollider Bookの最初の章から改作された素晴らしい例があ�
 
 コード内の赤色で表示されるテキストはすべてコメントです。 プログラミング言語を初めて使用する場合、コメントは、自分自身と後で読む必要のある人にとって、コードを文書化するのに非常に便利な方法です。 二重スラッシュで始まる行はコメントです。 有効なコード行の直後にコメントを書くことができます。 評価の際、コメント部分は無視されます。 SCでは、セミコロンを使用して有効なステートメントの終わりを示します。
 
-```c
+```supercollider
 2 + 5 + 10 − 5; // ただ計算するだけ
 
 rrand(10, 20);   // 10∼20の乱数を生成します
@@ -223,7 +222,7 @@ rrand(10, 20);   // 10∼20の乱数を生成します
 
 カーソルがその行の後のコメントの途中にある場合でも、行を評価できます。 コメント部分は無視されます。 次の2つの段落は、例のためだけに"コメント"として記述されます。
 
-```c
+```supercollider
 //ショートカット[ctrl + /]を使用して、1行のコードをすばやくコメントアウトできます。
 
 "Some SC code here...".postln;2
@@ -245,7 +244,7 @@ rrand(10, 20);   // 10∼20の乱数を生成します
 
 SuperCollider は、操作に関係なく、左から右の優先順位に従います。これは、たとえば、乗算が最初に発生しないことを意味します。
 
-```c
+```supercollider
 // 高校では、結果は9でした。 SCでは、14です。
 
 5 + 2 * 2;
@@ -265,7 +264,7 @@ SuperCollider は、操作に関係なく、左から右の優先順位に従い
 
 小さくても役に立つ詳細：デフォルトで、SuperCollider は最後に評価されたものの結果を常にPostウィンドウにpostします。 これは、評価時に Hello World コードが2度プリントされる理由を説明しています。 新しいドキュメントに次の行を入力し、[ctrl + A]ですべてを選択して、すべての行を一度に評価します。
 
-```c
+```supercollider
 "最初の行".postln;
 "2行目".postln;
 (2 + 2).postln;
@@ -287,7 +286,7 @@ postln リクエストにより、"Finished" という単語がpostされます)
 
 評価する前に複数行のコードを選択するのは面倒です。コードブロックを一度に実行するはるかに簡単な方法は、コードブロックを作成することです。一緒に実行するすべてのコード行をかっこで囲むだけです。以下に例を示します。
 
-```c
+```supercollider
 (
 // A little poem
 "Today is Sunday".postln;
@@ -313,7 +312,7 @@ postln リクエストにより、"Finished" という単語がpostされます)
 
 これは、独自のセクションに相応しいフリークをクリーニングするのに非常に便利なコマンドでです: [ctrl + shift + P] この行を評価して、後で Post ウィンドウをきれいにしてください：
 
-```c
+```supercollider
 100.do({"この行を繰り返しptint...".scramble.postln});
 ```
 
@@ -325,7 +324,7 @@ postln リクエストにより、"Finished" という単語がpostされます)
 
 すぐに SuperCollider パッチのサウンド出力の録音を開始する必要があります。 そのための簡単な方法を次に示します。
 
-```c
+```supercollider
 //クイックレコード
 //記録を開始：
 s.record;
@@ -351,7 +350,7 @@ Post ウィンドウには、ファイルが保存されたフォルダーのパ
 
 数値、words、unit ジェネレーター、関数、またはコードブロック全体を変数に保存できます。 変数は、1文字またはユーザーが選択した単語全体です。 等号(=)を使用して変数を"割り当て"ます。 これらの行を一度に1つずつ実行し、Post ウィンドウを監視します。
 
-```c
+```supercollider
  x = 10;
  y = 660;
  y; // 内容を確認します
@@ -366,7 +365,7 @@ Post ウィンドウには、ファイルが保存されたフォルダーのパ
 
  
 
-```c
+```supercollider
 a = "Hello,World"; // 文字列
 b = [0,1,2,3,5]; // リスト
 c = Pbind(\note,Pwhite(0,10),\dur,0.1); // 後で Pbind についてすべて学習します。心配しないでください
@@ -386,7 +385,7 @@ d = b * 5; // bを取り、5を掛けて、それを新しい変数に割り当�
 
 多くの場合、変数に適切な名前を付けて、コード内で変数が何を表しているのかを思い出すのに役立ちます。 ∼ (チルダ)を使用して、より長い名前の変数を宣言できます。 チルダと変数名の間にスペースがないことに注意してください。
 
-```c
+```supercollider
 ∼myFreqs = [415,220,440,880,220,990];  
 ∼myDurs = [0.1,0.2,0.2,0.5,0.2,0.1];  
 
@@ -425,7 +424,7 @@ Pbind(\freq,Pseq(∼myFreqs),\dur,Pseq(∼myDurs)).play;
 
 以下に、2種類の変数を比較する簡単な例を示します。行ごとに評価し、Post ウィンドウを監視します。
 
-```c
+```supercollider
 // 環境変数
 ∼galaApples = 4;
 
@@ -459,7 +458,7 @@ apples; // なくなった
 
 変数について理解する最後の便利な点は、変数を再割り当てできることです。いつでも新しい値を与えることができます。
 
-```c
+```supercollider
 // 変数を割り当てる
 a = 10 + 3;
 a.postln; // 確認してください
@@ -471,7 +470,7 @@ a.postln; // チェックしてください：古い値はなくなりました�
 
 初心者にとって混乱を招くことがある非常に一般的な方法は、変数自体が独自の再割り当てで使用される場合です。この例を見てください： 
 
-```c
+```supercollider
 x = 10; // 変数xに10を割り当てます
 x = x + 1; // 変数xにx + 1を割り当てます
 x.postln; // 確認してください
@@ -505,7 +504,7 @@ x.postln; // 確認してください
 
 新たにこれを試してみましょう。次のコード行を入力して実行します。 
 
-```c
+```supercollider
 Pbind(\degree,Pseries(0,1,30),\dur,0.05).play;
 ```
 
@@ -515,7 +514,7 @@ Pbind(\degree,Pseries(0,1,30),\dur,0.05).play;
 
 Pbind は、SuperCollider の Pattern ファミリーのメンバーです。Pbind および Pseries の大文字Pは、パターン (Pattern) を表します。 私たちはいずれすぐにファミリーの他のメンバーに会います。 とりあえず、Pbind だけを詳しく見てみましょう。 この単純な例を試してください：
 
-```c
+```supercollider
 Pbind(\degree,0).play;
 ```
 
@@ -531,7 +530,7 @@ Pbind(\degree,0).play;
 
 次に、音符の長さを少し試してみます。 Pbind はキーワード \dur を使用して、秒単位で期間を指定します。
 
-```c
+```supercollider
 Pbind(\degree,0,\dur,0.5).play;
 ```
 
@@ -543,7 +542,7 @@ Pbind(\degree,0,\dur,0.5).play;
 
 スケールのように、いくつかの音を順番に演奏してみましょう。また、音符を短く、たとえば0.2秒にしましょう。
 
-```c
+```supercollider
 Pbind(\degree,Pseq([0,1,2,3,4,5,6,7],1),\dur,0.2).play;
 ```
 
@@ -567,7 +566,7 @@ Pbind 内の Pseq の位置にも注意してください。これは、\degree�
 
  
 
-```c
+```supercollider
 Pbind(\degree,Pseq([0,1,2,3,4,5,6,7],5),\dur,Pseq([0.2,0.1,0.1,0.2,0.2,0.35],inf) ).play;
 ```
 
@@ -611,7 +610,7 @@ Pbind は永遠にプレイしますか？ いいえ：他の Pseq がジョブ�
 
  
 
-```c
+```supercollider
 Pbind(
 	\degree,Pseq([0,1,2,3,4,5,6,6,7],5),
 	\dur,Pseq([0.2,0.1,0.1,0.2,0.2,0.35],inf)
@@ -648,7 +647,7 @@ Pbind は、音度（主音との音程に従って、番号を振ったもの�
 
 図2：音階、ノート番号、ミディノット、および周波数の比較
 
-```c
+```supercollider
 Pbind(\degree,5).play;
 Pbind(\note,9).play;
 Pbind(\midinote,69).play;
@@ -680,7 +679,7 @@ Pbind(\freq,440).play;
 
  
 
-```c
+```supercollider
 (
  Pbind(
  	\degree,Pseq([0,-1,2,-3,4,-3,7,11,4,2,0,-3],5),
@@ -709,7 +708,7 @@ Pbind(\freq,440).play;
 
 ### 13.6 Prand
 
-```c
+```supercollider
 (
 Pbind(
 	\degree, Prand([2, 3, 4, 5, 6], inf),
@@ -732,7 +731,7 @@ Pbind(
 
 パターンファミリーのもう1つのポピュラーメンバーは Pwhiteです。これは、等分布乱数ジェネレータです（名前は"ホワイトノイズ"に由来します）。たとえば、Pwhite(100,500) は100から500までの乱数を取得します。
 
-```c
+```supercollider
 (
 Pbind(
 	\freq, Pwhite(100, 500),
@@ -771,7 +770,7 @@ Pwhite と Prand  の違いに注意してください。どちらもランダ�
 
 ​	d) 以下の例を実行します。Cマイナースケール(黒鍵を含む)を演奏するために、\degree ではなく \note を使用します。リスト[0,2,3,5,7,8,11,12]には、ピッチC、D、E、F、G、A、B、Cに対応する8つの数字がありますが、それぞれのイベントの数は例は実際にプレイしますか？どうして？
 
-```c
+```supercollider
 // Pseq
 (
 Pbind(
@@ -823,7 +822,7 @@ Pbind(
 -  前述の .trace.play を使用して、Post ウィンドウに出力される値を確認します。
 -  最後に、ヘルプファイルを参照して推測を確認します（パターンの名前を選択し、[ctrl + D]を押して対応するヘルプファイルを開きます）。
 
-```c
+```supercollider
 // パターンの語彙を増やす
 
 // Pser
@@ -909,7 +908,7 @@ Pbind(
 
 Pbinds 内にコードを記述したいですか？それらをリストとして記述します（角括弧で囲まれたコンマ区切り値）：
 
-```c
+```supercollider
 (
 Pbind(
 	\note,Pseq([[0,3,7],[2,5,8],[3,7,10] ,[ 5,8,12 ]],3),
@@ -939,7 +938,7 @@ Pbind(
 
 
 
-```c
+```supercollider
 (
 Pbind(
  \scale,Scale .harmonicMinor,
@@ -967,7 +966,7 @@ Pbind(
 
 \ctranspose キーワードを使用して、音の移調を実現します。これは、\degree,\note,および \midinote と連動しますが、\freq とは連動しません。
 
-```c
+```supercollider
 (
 Pbind(
 	\note,Pser([0,2,3,5,7,8,11,11,12],11),
@@ -987,7 +986,7 @@ Pbind(
 
 マイクロトーンの書き方：
 
-```c
+```supercollider
 // \note および \midinote を使用したマイクロトーン：
 Pbind(\note,Pseq([0,0.5,1,1.5,1.75,2],1)).play;
 Pbind(\midinote,Pseq([60,69,68.5,60.25,70],1)).play;
@@ -999,7 +998,7 @@ Pbind(\midinote,Pseq([60,69,68.5,60.25,70],1)).play;
 
 Pbind の \dur キーに指定する値は拍数です。つまり、1は1拍、0.5は半拍などを意味します。特に指定しない限り、デフォルトのテンポは60 BPM（1分あたりのビート）です。別のテンポで演奏するには、新しいTempoClock を作成するだけです。 120ビート/分（BPM）で再生する Pbind は次のとおりです。 
 
-```c
+```supercollider
  (
  Pbind(\degree,Pseq([0,0.1,1,2,3,4,5,6,7]),
  	\dur,1;
@@ -1025,7 +1024,7 @@ Pbind？これは単なる Pbind(\degree,0).play であり、1つのノートを
 
  
 
-```c
+```supercollider
 (
 Pbind(
 	\degree,Pwhite(0,10),
@@ -1040,7 +1039,7 @@ Pbind(
 
 いくつかの Pbind を同時に開始するには,単純にそれらすべてを 1 つのコードブロック内に入れます。
 
-```c
+```supercollider
 (//大きなブロック
 Pbind(
 	\freq,Pn(Pseries(110,111,10)),
@@ -1074,7 +1073,7 @@ Pbind を時系列に再生するには（単にそれらを手動で次々に�
 
  
 
-```c
+```supercollider
 //基本的なフォークの例を使用できます。Postウィンドウを見てください：
 (
 {
@@ -1135,7 +1134,7 @@ Pbind を同時に、順番に再生する高度な方法については、Ppar 
 
 この場合,変数を使用できます。覚えているかもしれませんが、変数を使用すると、データのチャンクを柔軟かつ簡潔に参照できます（必要に応じてセクション12を 確認してください	）。 以下に例を示します。
 
-```c++
+```supercollider
 // 同じ数字のシーケンスをたくさん使用していますか？変数に保存します：
 c = [0,2,3,5,7,8,11,11,12]  
 // これで参照できます
@@ -1148,7 +1147,7 @@ Pbind(\note,Pslide(c,5,3,1),\dur,0.15).play;
 
 変数の使用を練習する別の例：2つの Pbind を同時にプレイしたいとしましょう。それらの1つは昇順のメジャースケールを実行し、もう1つは1オクターブ上の降順のメジャースケールを実行します。どちらも同じ durations のリストを使用します。これを記述する1つの方法を次に示します。
 
-```c
+```supercollider
 ∼scale = [0,1,2,3,4,5,6,7];
 ∼durs = [0.4,0.2,0.2,0.4,0.8,0.2,0.2,0.2];
 (
@@ -1206,7 +1205,7 @@ Pbind は、一種の楽譜として考えることができます。Pbind は�
 
 
 
-```c
+```supercollider
 //スコアを定義する
  (
  p = Pbind(
@@ -1243,7 +1242,7 @@ Pbind は、一種の楽譜として考えることができます。Pbind は�
 
 スコア（変数 p に格納されている Pbind ）は、開始または停止について何も知りません。これは単なるレシピです。プレーヤーは、開始、停止、"最初から始めてもらえませんか"などを知っている人です。つまり、EventStreamPlayer と話す必要があります。必要なことは、名前を付けること、つまり変数に保存することだけです 。
 
-```c
+```supercollider
  //これらの行を1つずつ試します
  ∼myPlayer = p.play;
  ∼myPlayer.stop;
@@ -1265,7 +1264,7 @@ Pbind は、一種の楽譜として考えることができます。Pbind は�
 
   
 
-```c
+```supercollider
 //スコアを定義する
 (
 var myDurs = Pseq([Pn(1,5),3,Pn(1,5),3,Pn(1,6),1/2,1/2,1,1,3,1,3] ,inf)* 0.4;
@@ -1380,7 +1379,7 @@ SuperCollider で実際に実行できる例をいくつか試してみましょ
 1行ずつ実行し、メッセージ、レシーバーオブジェクト、および引数(存在する場合)を識別できるかどうかを確認します。
 基本的な構造は、このドキュメントの最後にある Receiver.message(arguments) Answers です。3
 
-```c
+```supercollider
 12345 [1, 2, 3, "wow"].reverse;
 "hello".dup(4);
 3.1415.round(0.1); // 最初のドットは3.1415 4 100.randの10進数のケースであることに注意してください。 //この行を数回評価します
@@ -1394,7 +1393,7 @@ SuperCollider で式を記述する方法は複数あります。上記で見た
 
 どちらの記述方法でも使用できます。メッセージが2つ以上の引数を取る場合の動作を次に示します。
 
-```c
+```supercollider
 12345.dup(20); // レシーバー表記
 dup(5,20); // 関数表記法でも同じこと
 3.1415.round(0.1); // レシーバー表記
@@ -1413,7 +1412,7 @@ round(3.1415, 0.1); // 関数表記
 
 演習：関数表記のみを使用して次のステートメントを書き換えます
 
-```c
+```supercollider
 1100.0.rand.round(0.01).dup(4);
 ```
 
@@ -1448,7 +1447,7 @@ round(3.1415, 0.1); // 関数表記
 > これらの内部コマンドは、各成分(レタス、トマト、チーズなど)のmessage(arg)をネストすることでさらに明確にすることができます。
 > 各内部メッセージは結果を生成し、その結果は外部メッセージの引数として使用されます。
 
-```c
+```supercollider
 // Pseudo-code to make dinner:
 serve(
 	toss(
@@ -1475,7 +1474,7 @@ serve(
 > このスタイルのコードを"読み取る"には、最も内側のネストされたメッセージから開始し、連続する各レイヤーに移動します。
 > 以下は、最も内側のメッセージが外側のメッセージ内にネストされる方法を示すために調整された例です。
 
-```c
+```supercollider
 			exprand(1.0,1000.0);
 
 		dup({exprand(1.0,1000.0)},100);
@@ -1490,7 +1489,7 @@ round(sort(dup({exprand(1.0,1000.0)},100)),0.01);
 数字が何をしているのかを説明する必要はありません。タスクは、ネストの各層で引数を識別することです。
 (例と演習の質問もCottleのチュートリアルから借用され、わずかに修正されています。)
 
-```c
+```supercollider
 // ネストと適切なインデント
 (
 {
@@ -1552,7 +1551,7 @@ round(sort(dup({exprand(1.0,1000.0)},100)),0.01);
 
 引用符は、一連の文字(スペースを含む)を単一の単位として囲むために使用されます。 これらは文字列と呼ばれます。 一重引用符は、文字列とはわずかに異なるシンボルを作成します。 記号は、テキストの直前にバックスラッシュを付けて作成することもできます。 したがって、"greatSymbol"と\greatSymbolは同等です。
 
-```c
+```supercollider
 "これは素敵な文字列です"; 
 
   'greatSymbol';
@@ -1580,7 +1579,7 @@ round(sort(dup({exprand(1.0,1000.0)},100)),0.01);
 
 配列は、リバース、スクランブル、ミラーリング、選択などのメッセージを理解します。配列に対して数学演算を実行することもできます。 
 
-```c
+```supercollider
 [1,2,3,4, "hello"].scramble;
 [1,2,3,4, "hello"].mirror;
 [1,2,3,4].reverse + 10;
@@ -1594,14 +1593,14 @@ Arrays の詳細については、セクション22で近日公開予定です�
 
 中括弧(または"中括弧")は関数を定義します。関数は、おそらく複数回使用および再利用される何らかの種類の操作またはタスクをカプセル化し、そのたびに異なる結果を返す可能性があります。 以下の例は、SuperCollider bookからのものです。
 
-```c
+```supercollider
  exprand(1,1000.0);
  {exprand(1,1000.0)}
 ```
 
 David Cottle が彼の例を紹介します: "最初の行はランダムな数字を選択します。これは Post ウィンドウに表示されます。 2番目は、まったく異なる結果、つまり関数を出力します。 関数は何をしますか？ 乱数を選択します。 その違いはどのようにコードに影響しますか？ 以下の行を考慮してください。 最初は乱数を選択して複製します。 2番目は乱数抽出関数を5回実行し、結果を配列に収集します。" *
 
-```c
+```supercollider
 rand(1000.0).dup(5); // 番号を選択して複製します
 {rand(1000.0)}.dup(5); // 数字を選ぶ機能を複製します
 {rand(1000.0)}.dup(5).round(0.1); // 上記のすべて、そしてラウンド
@@ -1635,7 +1634,7 @@ rand(1000.0).dup(5); // 番号を選択して複製します
 
 SCの if / else の構文は、if(condition,{true action},{false action}) です。 条件はブールテストです（trueまたはfalseを返す必要があります）。 テストがtrueを返す場合、最初の関数が評価されます; それ以外の場合、2番目の関数は。試してみてください：
 
-```c
+```supercollider
 // if / else
 if(100> 50,{"非常に真".postln},{"非常に偽".postln});
 ```
@@ -1696,7 +1695,7 @@ false の場合、action2 も無視され、test3 に進みます。
 関数間にコンマがないことに注意してください。
 case ステートメントの終わりを示すために、最後にセミコロン ; を使用するだけです。
 
-```c
+```supercollider
 // case
 (
 ~num = -2;
@@ -1729,7 +1728,7 @@ case
 
 以下の例の最初の行は、関数を定義し、それを変数fに割り当てます。2行目は、関数を機能させます。
 
-```c
+```supercollider
 f = { 2 + 2 }; // 関数を定義します
 2 f.value; // 関数を機能させる
 ```
@@ -1740,7 +1739,7 @@ f = { 2 + 2 }; // 関数を定義します
 
 以下の例は、図5の図面に似ています。
 
-```c
+```supercollider
 f = {arg a, b; ["a plus b", a+b, "a times b", a*b].postln}; // 関数を定義
 f.value(3, 7); // これで、関数の引数として任意の2つの数値を指定できます
 f.value(10, 14);
@@ -1766,7 +1765,7 @@ Publishing Company, Inc, 1990, p. 1.
 
 最後の例として、非常に便利な関数を1つ示します。
 
-```c
+```supercollider
 //この関数を使用して、夏の日を過ごす方法を決定します
 (
 ~whatToDo = {
@@ -1803,13 +1802,13 @@ var today, dayName, actions;
 
 ​       関数の先頭で引数を宣言する別の一般的な表記法は次のとおりです。
 
-```c++
+```supercollider
 f={| a,b | a + b} 
 ```
 
 ​      これは、
 
-```c++
+```supercollider
 f = {arg a, b; a + b}
 ```
 
@@ -1819,7 +1818,7 @@ f = {arg a, b; a + b}
 
 配列は、SuperCollider で最も一般的なタイプのコレクションです。[0,1,2]のように、角かっこで囲まれたアイテムのコレクションを記述するたびに、それは Array クラスのインスタンスになります。多くの場合、さまざまな方法で配列を操作します。 配列が理解できる興味深いメソッドの一部を以下に示します。
 
-```c
+```supercollider
 // 配列を作成する
 a = [10, 11, 12, 13, 14, 15, 16, 17];
 
@@ -1850,7 +1849,7 @@ a.powerset; // 配列の要素のすべての可能な組み合わせを返し�
 
 配列を使用して数学を行うことができます：
 
-```c
+```supercollider
 [1, 2, 3, 4, 5] + 10;
 [1, 2, 3, 4, 5] * 10;
 ([1, 2, 3, 4, 5] / 7).round(0.01); // 優先順位の括弧に注意してください
@@ -1864,7 +1863,7 @@ x = 11; y = 12; // いくつかの変数を試します
 
 クラス Array を使用して新しいコレクションを作成するいくつかの方法を次に示します。
 
-```c
+```supercollider
 // 算術級数 Arithmetic series
 Array.series(size: 6, start: 10, step: 3);
 // 幾何級数 Geometric series
@@ -1898,7 +1897,7 @@ a[3] = "wow"; // a.put(3, "wow")と同じ
 
 他の人のコードに30！4のようなものが表示されるのは時間の問題です。このショートカット表記は、同じアイテムを含む配列を何度も作成するだけです。
 
-```c
+```supercollider
 // ショートカット表記 :
 30!4;
 "hello" ! 10;
@@ -1914,7 +1913,7 @@ Array.fill(10, "hello");
 
 配列の作成に使用されるもう1つの一般的な構文のショートカットを次に示します。
 
-```c
+```supercollider
 // What is this?
 (50..79);
 
@@ -1946,7 +1945,7 @@ Array.series(10, 50, 3);
 
  
 
-```c
+```supercollider
 ~myFreqs = Array.fill(10, {rrand(440, 880)});
 
 // ここで、リストのすべての項目で簡単なアクションを実行しましょう:
@@ -2058,7 +2057,7 @@ EventStreamPlayer は、ピアニストのような単なるプレーヤーで�
 
 ライブで演奏できるシンプルなシンセをご紹介します。これは、最も古い電子楽器の1つであるテルミンのシミュレーションです。
 
-```c
+```supercollider
 {SinOsc.ar(freq: MouseX.kr(300, 2500), mul: MouseY.kr(0, 1))}.play;
 ```
 
@@ -2082,7 +2081,7 @@ SinOsc、MouseX、および MouseY は UGen です。SinOsc は正弦波トー�
 
 
 
-```c
+```supercollider
 { SinOsc.ar }.plot; // 正弦波 sine wave
 { Saw.ar }.plot; // のこぎり波 sawtooth wave
 { Pulse.ar }.plot; // 方形波 square wave
@@ -2137,7 +2136,7 @@ SinOsc、MouseX、および MouseY は UGen です。SinOsc は正弦波トー�
 
 一部の UGen の出力を覗き見ると、これがより明確になります。 SuperCollider が Post ウィンドウに毎秒数千の数字を印刷することは期待できませんが、毎秒数個を印刷するように依頼することはできます。 次の行を一度に1つずつ入力して実行し(サーバーが実行されていることを確認してください)、Post ウィンドウを監視します。
 
-```c++
+```supercollider
 1 // post ウィンドウを見るだけ（音なし）
 2 {SinOsc.kr(1).poll}.play;
 3 // ctrl + ピリオドを押して、次の行を評価します:
@@ -2151,7 +2150,7 @@ SinOsc、MouseX、および MouseY は UGen です。SinOsc は正弦波トー�
 次の行を評価する前にボリュームを下げてから、ゆっくりと戻します。
 柔らかいクリック音が聞こえるはずです。
 
-```c
+```supercollider
 {LFNoise0.ar(1).poll}.play;
 ```
 
@@ -2171,7 +2170,7 @@ UGen がどのような引数を受け入れるかをどのようにして見つ
 
 引数を指定しない場合、SCはヘルプファイルに表示されるデフォルト値を使用します。引数に明示的に名前を付けない場合は、ヘルプファイルに示されている正確な順序で引数を指定する必要があります。明示的に名前を付けた場合は、任意の順序で並べることができ、途中でスキップすることもできます。引数を明示的に命名することも、コードをよりよく理解するのに役立つため、優れた学習ツールです。以下に例を示します。
 
-```c++
+```supercollider
 // minvalとmaxvalが順番に提供され、キーワードなし
 {MouseX.kr(300, 2500).poll}.play;
 // minval,maxval,およびlagが提供され、ワープをスキップ
@@ -2188,7 +2187,7 @@ UGen がどのような引数を受け入れるかをどのようにして見つ
 
 実際の楽しみは、いくつかの UGen を使用して他の UGen のパラメーターをコントロールするときに始まります。テルミンの例はまさにそれを行いました。：今、あなたはセクション3の例のひとつを正確に理解するためのすべてのツールを持っています。例の中で最後の3行はステップバイステップで、どのようにして LFNoise0 で周波数をコントロールするか方法を示します。
 
-```c++
+```supercollider
 {SinOsc.ar(freq: LFNoise0.kr(10).range(500, 1500), mul: 0.1)}.play;
 
 // 分解する :
@@ -2217,7 +2216,7 @@ range メソッドは、単に UGen の出力を再スケーリングします�
 
 これで、.range メソッドを使用して、サーバーで UGen の出力をスケーリングする方法がわかりました。ほぼすべての UGen が持っている引数 mul および add を使用することにより、同じことをより基本的なレベルで実現できます。以下のコードは、バイポーラ UGen とユニポーラ UGen の両方で、範囲アプローチと mul / add アプローチの等価性を示しています。
 
-```c
+```supercollider
 // こちらは:
 {SinOsc.kr(1).range(100, 200).poll}.play;
 // ...これと同じ:
@@ -2252,7 +2251,7 @@ range メソッドは、単に UGen の出力を再スケーリングします�
 
 
 
-```c++
+```supercollider
 // たくさんの数字
 a = [1, 2, 3, 4, 5, 6, 7];
 // 0から127に再スケーリング、線形から線形
@@ -2267,7 +2266,7 @@ geometric sequences. Briefly, linear (arithmetic) sequences are like "1, 2, 3, 4
 
 これは、いくつかのシンセを開始し、それらを個別に停止できる非常に一般的な方法です。例は自明です：
 
-```c
+```supercollider
 // 一度に1行ずつ実行します(間に音を止めないでください)：
 a = { Saw.ar(LFNoise2.kr(8).range(1000, 2000), mul: 0.2) }.play;
 b = { Saw.ar(LFNoise2.kr(7).range(100, 1000), mul: 0.2) }.play;
@@ -2288,7 +2287,7 @@ c.free;
 
 
 
-```c
+```supercollider
 x = {arg freq = 440, amp = 0.1; SinOsc.ar(freq, 0, amp)}.play;
 x.set(\freq, 778);
 x.set(\amp, 0.5);
@@ -2308,7 +2307,7 @@ x.free;
 
 次のコードを試してください:
 
-```c++
+```supercollider
 {Out.ar(1, SinOsc.ar(440, 0, 0.1))}.play; // 右チャンネル
 ```
 ------
@@ -2338,7 +2337,7 @@ Out.ar の2番目の引数は、そのバスに「書き込む」実際の信号
 
 エフェクトに使用されるオーディオ bus の簡単な例を以下に示します。
 
-```c
+```supercollider
 // start the effect
 f = {Out.ar(0, BPF.ar(in: In.ar(55), freq: MouseY.kr(1000, 5000), rq: 0.1))}.play;
 // start the source
@@ -2368,7 +2367,7 @@ noise synth→ bus 55→ filter synth
 
 
 
-```c++
+```supercollider
 // 警告：フィードバックを避けるためにヘッドフォンを使用してください
 {SoundIn.ar(0)}.play; // In.ar(8)と同じ：最初の入力バスからサウンドを取得
 
@@ -2382,7 +2381,7 @@ noise synth→ bus 55→ filter synth
 
 メーターウィンドウが開いている状態で—[ctrl + M]—、これを見てください。
 
-```c
+```supercollider
 {Out.ar(0, Saw.ar(freq: [440, 570], mul: Line.kr(0, 1, 10)))}.play;
 ```
 
@@ -2414,7 +2413,7 @@ David Cottle は、"マルチチャネル拡張はブードゥー教に隣接す
 
 左チャネルパルスを1秒間に2回、右チャネルパルスを1秒間に3回にします。 7
 
-```c
+```supercollider
 a = {Out.ar(0, SinOsc.ar(freq: [800, 880], mul: LFPulse.ar(2)))}.play;
 a.free;
 ```
@@ -2429,7 +2428,7 @@ a.free;
 
 前の2つのセクションで学んだすべてを使用する例は次のとおりです。オーディオバスとマルチチャネル拡張。
 
-```c
+```supercollider
 // これを最初に実行します("リバーブをオンにする"--最初は何も聞こえません)
 r = {Out.ar(0, FreeVerb.ar(In.ar(55, 2), mix: 0.5, room: 0.9, mul: 0.4))}.play;
 
@@ -2455,7 +2454,7 @@ Bus オブジェクトは、常に使用可能な bus を選択して作業を�
 
 
 
-```c
+```supercollider
 // バスを作成
 ~myBus = Bus.audio(s, 2);
 // リバーブをオンにする：myBus(ソースサウンド)から読み取ります
@@ -2472,7 +2471,7 @@ Bus.audio の最初の引数は、サーバーを表す変数sです。 2番目�
 
 パンニングとは、オーディオ信号をステレオまたはマルチチャンネルの音場に広げることです。以下は、Pan2 によって左右のチャンネル間で跳ね返るモノ信号です。*
 
-```c
+```supercollider
 p = {Pan2.ar(in: PinkNoise.ar, pos: SinOsc.kr(2), level: 0.1)}.play;
 p.free;
 ```
@@ -2492,7 +2491,7 @@ Pan2 ヘルプファイルから、引数pos(位置)が-1(左)から+1(右)の�
 以下に、より詳細な例を示します。 のこぎり波は、非常に鋭いバンドパスフィルターを通過します（rq：0.01）。 ローカル変数を使用して、コードのさまざまな部分をモジュール化することに注意してください。
 上記の例でできる限り分析して理解しようとしましょう。 次に、以下の質問に答えてください。
 
-```c
+```supercollider
 (
 x = {
 	var lfn = LFNoise2.kr(1);
@@ -2526,7 +2525,7 @@ x.free;
 
 ここにクールなトリックがあります。 マルチチャンネル拡張を使用して複雑なサウンドを生成し、それをすべて Mix または Splay でモノラルまたはステレオにミックスダウンできます:
 
-```c++
+```supercollider
 // 5チャネル出力（メーターウィンドウを見てください）
 a = { SinOsc.ar([100, 300, 500, 700, 900], mul: 0.1) }.play;
 a.free;
@@ -2562,7 +2561,7 @@ d.free;
 
 Mix にはもう1つの素晴らしいトリックがあります：メソッド fill です。 シンセの配列を作成し、それを一度にモノラルにミックスダウンします。
 
-```c
+```supercollider
 // インスタントクラスタージェネレーター
 c = { Mix.fill(16, {SinOsc.ar(rrand(100, 3000), mul: 0.01)}) }.play;
 c.free;
@@ -2604,7 +2603,7 @@ Mix.fill には、作成する配列のサイズと、配列を埋めるため�
 | ------------------------------------------------------------ |
 | コンピューターに保存されているサウンドファイルの正しいパスを取得する簡単な方法は、ファイルを空のSuperColliderドキュメントにドラッグすることです。 SCは既に二重引用符で囲まれた完全なパスを自動的に提供します！ |
 
-```c
+```supercollider
 // buffersにロードします:
 ~buf1 = Buffer.read(s, "/home/Music/wheels-mono.wav"); // 1つのサウンドファイル
 ~buf2 = Buffer.read(s, "/home/Music/mussorgsky.wav"); // 別のサウンドファイル
@@ -2639,7 +2638,7 @@ Mix.fill には、作成する配列のサイズと、配列を埋めるため�
 前の PlayBuf の例では、各行の後に [ctrl+.] を押してサウンドを停止する必要がありました。 他の例では、シンセを変数（ x = {WhiteNoise.ar}.playなど）に割り当てて、x.free で直接停止できるようにしました。
 SuperCollider でシンセを作成するたびに、「サウンドエンジン」であるサーバーで実行されることがわかります。サーバーで実行されている各シンセは、ノードで表されます。 コマンド s.plotTree を使用して、このノードツリーを覗くことができます。 それを試してみてください。 NodeTree という名前のウィンドウが開きます。
 
-```c++
+```supercollider
 // GUI をオープン
 s.plotTree;
 // これらを1つずつ実行し（サウンドを停止しないでください）、ノードツリーを監視します:
@@ -2663,7 +2662,7 @@ z.free;
 
 重要なことの1つは、無音のみを生成している場合でも、シンセがサーバーで実行されたままになる可能性があることです。以下に例を示します。この WhiteNoise UGen の振幅は、2秒で0.2から0になります。その後、何も聞こえません。しかし、シンセノードはまだそこにあり、解放するまで消えません。
 
-```c
+```supercollider
 1 // ノードツリーウィンドウを数秒間監視する
 2 x = {WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
 3 x.free;
@@ -2677,7 +2676,7 @@ z.free;
 
 行を実行しながらノードツリーを見てみましょう。
 
-```c
+```supercollider
 // doneAction: 2 無しで
 {WhiteNoise.ar(Line.kr(0.2, 0, 2))}.play;
 {PlayBuf.ar(1, ~buf1)}.play; // PS. これは、まだ前のセクションを引き継いで ~buf1 にサウンドファイルが読み込まれていることを前提としています
@@ -2717,7 +2716,7 @@ Env は、あらゆる種類のエンベロープを定義するために常に�
 ### 38.1 Env.perc
 Env.perc は、パーカッシブなエンベロープを取得する便利な方法です。それは、attackTime、releaseTime、level、および curve の4つの引数を取ります。シンセ以外の典型的なシェイプを見てみましょう。
 
-```c
+```supercollider
 Env.perc.plot; // すべてのデフォルト引数を使用
 Env.perc(0.5).plot; // attackTime: 0.5
 Env.perc(attackTime: 0.3, releaseTime: 2, level: 0.4).plot;
@@ -2727,7 +2726,7 @@ Env.perc(0.3, 2, 0.4, 0).plot; // 上と同じ、ただし、curve：0は直線�
 
 これで、次のようなシンセに簡単に接続できます:
 
-```c
+```supercollider
 {PinkNoise.ar(Env.perc.kr(doneAction: 2))}.play; // デフォルト Env.perc 引数
 {PinkNoise.ar(Env.perc(0.5).kr(doneAction: 2))}.play;
 {PinkNoise.ar(Env.perc(0.3, 2, 0.4).kr(2))}.play;
@@ -2741,7 +2740,7 @@ Env.triangle は、duration, level の2つの引数のみを取ります。
 
 例：
 
-```c++
+```supercollider
 // これを見て:
 Env.triangle.plot;
 // これを聴いて:
@@ -2761,7 +2760,7 @@ Env.triangle.plot;
 Env.linen は、アタック、サステイン部分、およびリリースを含むラインエンベロープについて説明しています。レベルと曲線の種類も指定できます。
 例：
 
-```c++
+```supercollider
 // これを見て: 
 Env.linen.plot; 
 // これを聴いて: 
@@ -2777,7 +2776,7 @@ SinOsc.ar([300, 350], mul: Env.linen(0.01, 2, 1,
 Env.pairs を使用すると、任意の形状と期間のエンベロープを作成できます。
 Env.pairs は、2つの引数を取ります。[time, level] ペアの配列、および曲線のタイプ(使用可能なすべての曲線タイプについては、Env Helpファイルを参照してください)。
 
-```c++
+```supercollider
 (
 {
 	var env = Env.pairs([[0, 0], [0.4, 1], [1, 0.2], [1.1, 0.5], [2, 0]], \lin);
@@ -2813,7 +2812,7 @@ Env.pairs は、2つの引数を取ります。[time, level] ペアの配列、�
 必要な数値の範囲に合わせてスケーリングする必要があります。
 たとえば、エンベロープを作成して、時間の経過に伴う周波数の変化をコントロールできます。
 
-```c++
+```supercollider
 (
 {
 	var freqEnv = Env.pairs([[0, 100], [0.4, 1000], [0.9, 400], [1.1, 555], [2,
@@ -2839,7 +2838,7 @@ Env.pairs は、2つの引数を取ります。[time, level] ペアの配列、�
 
 ASR（アタック、サステイン、リリース）がエンベロープに適合します。 より一般的なバリエーションは、ADSRエンベロープ（ Attack、Decay、Sustain、Release ）です。 両方見てみましょう。
 
-```c++
+```supercollider
 // ASR
 // 音をプレイ ('press key')
 // attackTime: 0.5 seconds, sustainLevel: 0.8, releaseTime: 3 seconds
@@ -2888,7 +2887,7 @@ ASRまたはADSRエンベロープをシンセで機能させるには、gate �
 
 記録については、以下のコードに示すように、エンベロープを生成するためにこのセクションで学んだ構成はショートカット（短縮）であることを知っておく必要があります。
 
-```c++
+```supercollider
 // これは:
 { SinOsc.ar * Env.perc.kr(doneAction: 2) }.play;
 // ... これのショートカットです:
@@ -2911,7 +2910,7 @@ EnvGen は、Env によって定義されたブレークポイントエンベロ
 
 SynthDef は、シンセの"レシピを書く"ために使用するものです。その後、Synth で再生できます。以下に簡単な例を示します。
 
-```c++
+```supercollider
 // SynthDefオブジェクトを使用したシンセ定義
 SynthDef("mySine1", {Out.ar(0, SinOsc.ar(770, 0, 0.1))}).add;
 // Synthオブジェクトで音をプレイする
@@ -2956,7 +2955,7 @@ SynthDef で1つ以上のシンセ定義を作成した後、Synth でそれら�
 
 
 
-```c++
+```supercollider
 // SynthDefを作成する
 (
 SynthDef("wow", {arg freq = 60, amp = 0.1, gate = 1, wowrelease = 3;
@@ -3008,7 +3007,7 @@ SystemClock.sched(0, {a[5.rand].set(\freq, rrand(40, 70).midicps); rrand(3, 10)}
 
 
 
-```c++
+```supercollider
 60 * [1:01; 1:009; 1:0; 1:02; 1:015; 1:004; 1:019]
 ```
 
@@ -3032,7 +3031,7 @@ SystemClock.sched(0, {a[5.rand].set(\freq, rrand(40, 70).midicps); rrand(3, 10)}
 最初に SynthDef を作成し（一意の名前で）、次に aSynth を呼び出すというこの2段階のプロセスは、{SinOsc.ar} .play のような単純なステートメントを記述するときにSCが常に行うことです。
 SuperCollider は、それを（a）一時的な SynthDef の作成、および（b）即時再生（したがって、Post ウィンドウに表示される temp_01、temp_02 という名前）に解凍（unpacks）します。 あなたの便宜のために、それらはすべて舞台裏で。
 
-```c++
+```supercollider
 // これをするとき:
 {SinOsc.ar(440)}.play;
 // SCがやっているのはこれ:
@@ -3055,7 +3054,7 @@ SynthDefs としてシンセを作成することの美しさの1つは、Pbind 
 
 
 
-```c++
+```supercollider
 (
 Pbind(
 \instrument, "wow",
@@ -3105,7 +3104,7 @@ Pbind を使用してカスタム SynthDef の1つを再生するときは、次
 
 演習：1つ以上の Pbind を作成して、以下に示す "pluck" SynthDef を再生します。 mutedString 引数には、0.1〜0.9の値を試してください。 Pbind の1つに、ゆっくりしたコードのシーケンスを再生させます。 \strum で和音をアルペジエイトしてみてください。
 
-```c++
+```supercollider
 (
 SynthDef("pluck", {arg amp = 0.1, freq = 440, decay = 5, mutedString = 0.1;
 var env, snd;
@@ -3133,7 +3132,7 @@ SuperCollider のコントロール bus は、オーディオではなくコン�
 以下の例の最初の部分では、デモンストレーションのためだけに任意の bus 番号を使用します。2番目の部分では、 bus の作成に推奨されるBusオブジェクトを使用します。
 
 
-```c++
+```supercollider
 // コントロール bus 55にコントロール信号を書き込む
 {Out.kr(55, LFNoise0.kr(1))}.play;
 // コントロール bus 55からコントロール信号を読み取る
@@ -3153,7 +3152,7 @@ SuperCollider のコントロール bus は、オーディオではなくコン�
 
 
 
-```c++
+```supercollider
 // コントロール bus を作成する
 ~myControl = Bus.control(s, 1);
 
@@ -3193,7 +3192,7 @@ c.free;
 
 次の例では、メソッド asMap を使用して、制御バスを実行中のシンセノードに直接マップします。 この方法では、シンセの定義に In.kr も必要ありません。
 
-```c++
+```supercollider
 // SynthDef を作成する
 SynthDef("simple", {arg freq = 440; Out.ar(0, SinOsc.ar(freq, mul: 0.2))}).add;
 // コントロール bus を作成する
@@ -3214,7 +3213,7 @@ x.free;
 セクション30でオーディオバスについて議論するとき、実行順序の重要性を示唆しました。
 以下のコードは、セクション30のフィルター処理されたノイズの例の拡張バージョンです。 以下の説明では、実行順序の基本概念を説明し、実行順序が重要である理由を示します。
 
-```c++
+```supercollider
 // audio bus をつくる
 ~fxBus = Bus.audio(s, 1);
 ~masterBus = Bus.audio(s, 1);
@@ -3266,7 +3265,7 @@ Figure 9: Synth nodes in the Node Tree window
 
 正しい順序で正しい行を評価することは問題ありませんが、コードが複雑になると、注意が必要になる場合があります。 この job を簡単にするために、 SuperCollider では、ノードツリーのシンセを配置する場所を明示的に定義できます。 このために、target 引数と addAction 引数を使用します。
 
-```c++
+```supercollider
 n = Synth("noise", addAction: 'addToHead');
 m = Synth("masterOut", addAction: 'addToTail');
 f = Synth("filter", target: n, addAction: 'addAfter');
@@ -3282,7 +3281,7 @@ f = Synth("filter", target: n, addAction: 'addAfter');
 
 たくさんのシンセサイザーを使い始めたら、そのうちのいくつかはソースサウンド用、その他はエフェクト用、または必要なものは何でも、それらをグループにまとめることをお勧めします。 これが基本的な例です:
 
-```c++
+```supercollider
 // NodeTree のすべてを監視し続ける
 s.plotTree;
 // busをつくります
@@ -3331,7 +3330,7 @@ Out.ar(~masterBus, FreeVerb.ar(In.ar(~reverbBus, 2), mix: 0.5, room: 0.9))
 
 MIDIの拡張プレゼンテーションコンセプトや技は、このチュートリアルの範囲外です。 以下の例は、MIDIデバイスにある程度精通していることを前提として、スタートするために提供されています。
 
-```c++
+```supercollider
 // 利用可能なすべてのデバイスをSCに接続する簡単な方法
 MIDIIn.connectAll;
 
@@ -3383,7 +3382,7 @@ MIDIdef.noteOn(\quneo, {arg vel, note; a.play});
 
 そのためには、SuperCollider は単に各キーに対応するシンセノードを追跡する必要があります。 次の例に示すように、そのために配列を使用できます。
 
-```c++
+```supercollider
 // A SynthDef with ADSR envelope
 SynthDef("quick2", {arg freq = 440, amp = 0.1, gate = 1;
 	var snd, env;
@@ -3434,7 +3433,7 @@ OSC（Open Sound Control）は、ネットワークを介して異なるアプ�
 デモの目標は、OSCメッセージをスマートフォンからコンピューター、またはコンピューターからコンピューターに送信することです。
 受信側コンピューターで、次の簡単なコードスニペットを評価します:
 
-```c++
+```supercollider
 1 (
 2 OSCdef(
 3 key: \whatever,
@@ -3449,7 +3448,7 @@ OSC（Open Sound Control）は、ネットワークを介して異なるアプ�
 
 これは、両方のコンピューターが  SuperCollider を実行し、ネットワークに接続されていることを前提としています。 受信側コンピューターのIPアドレスを見つけ、送信側コンピューターで次の行を評価します:
 
-```c++
+```supercollider
 // メッセージを送信するマシンでこれを使用します
 ~destination = NetAddr("127.0.0.1", 57120); // 宛先の正しいIPアドレスを使用する
 computer
@@ -3531,7 +3530,7 @@ p-112
 
 4. 関数表記のみを使用した書き換え：
 
-   ```c++
+   ```supercollider
    dup(round(rand(100.0)、0.01),4);
    ```
 
@@ -3547,7 +3546,7 @@ p-112
 
 7. ソリューション: 
 
-   ```c++
+   ```supercollider
    a = {Out.ar(0, SinOsc.ar(freq: [800, 880], mul: LFPulse.ar([2, 3])))}.play;
    ```
 
