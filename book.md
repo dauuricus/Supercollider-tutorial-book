@@ -53,7 +53,7 @@ Part of the [Composition Commons](http://network.bepress.com/arts-and-humanities
 
 #  SuperColliderの優しい紹介
 
-
+2015年11月20日
 
 ### 著者　ブルーノ・ルヴィアロ
 
@@ -68,7 +68,8 @@ Part of the [Composition Commons](http://network.bepress.com/arts-and-humanities
 
  http://creativecommons.org/licenses/by-sa/4.0/
 
- 
+First published in 2014. This revision is from November 20, 2015.
+
 
 [TOC]
 
@@ -786,7 +787,7 @@ Pbind(\degree,0,\dur,0.5).play;
 
 
 
-もちろん、これは依然として非常に厳格で柔軟性がありません。常に同じ音で、常に同じ持続時間です。 心配しないでください：物事はすぐに良くなります。 しかし、まず、Pbind 内でピッチを指定できる他の方法を見てみましょう。
+もちろん、これは依然として非常に厳格で柔軟性がありません。常に同じ音で、常に同じ持続時間です。 心配しないでください：物事はすぐに良くなります。
 
 ### 13.2 Pseq
 
@@ -2308,7 +2309,7 @@ EventStreamPlayer は、ピアニストのような単なるプレーヤーで�
 ライブで演奏できるシンプルなシンセをご紹介します。これは、最も古い電子楽器の1つであるテルミンのシミュレーションです。
 
 ```c
-{SinOsc.ar(freq: MouseX.kr(300, 2500), mul: MouseY.kr(0, 1)}.play;
+{SinOsc.ar(freq: MouseX.kr(300, 2500), mul: MouseY.kr(0, 1))}.play;
 ```
 
 テルミンとは何かわからない場合は、今すぐすべてを停止し、YouTubeで“Clara Rockmore Theremin”を検索してください。その後、ここに戻って、SCテルミンで白鳥の歌を演奏してみてください。
@@ -2509,6 +2510,8 @@ a.linlin(1, 7, 0, 127).round(1);
 // 0から127、線形から指数
 a.linexp(1, 7, 0.01, 127).round(1); // 指数範囲にゼロを使用しないでください
 ```
+For a review of linear and exponential, look up online the difference between arithmetic and
+geometric sequences. Briefly, linear (arithmetic) sequences are like "1, 2, 3, 4, 5, 6" or "3, 6, 9,　12, 15", etc; and exponential (geometric)sequences are like "1, 2, 4, 8, 16, 32" or "3, 9, 27, 81,　243", etc.
 
 ### 28 個々のシンセを停止する
 
