@@ -2354,9 +2354,9 @@ SystemClock.sched(0, {a[5.rand].set(\freq, rrand(40, 70).midicps); rrand(3, 10)}
 * 結果として得られるサウンドは、ローパスフィルターを通過する7つの厳密に調整されたノコギリ波オシレーターの合計です。
  * これらの7つのオシレーターは、マルチチャンネル拡張により作成されます。
 
-* 変数 chorus とは何ですか？ 周波数に LFNoise2.kr を掛けたものです。 7項目の配列が LFNoise2 の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
+* 変数 chorus とは何ですか？ 周波数 freq  LFNoise2.kr を掛けたものです。 7項目の配列が LFNoise2 の引数として指定されているため、マルチチャネル拡張がここから始まります。 その結果、LFNoise2 のコピーが7つ作成され、各コピーはリスト [0.4, 0.5, 0.7, 1, 2, 5, 10] から取得した異なる速度で実行されます。 出力は、1.0〜1.02の範囲に制限されます。
 
-* As an extra feature, notice that freq is enclosed within a Lag.kr. Whenever a new frequency value is fed into this Synth, the Lag UGen simply creates a ramp between the old value and the new value. The "lag time" (duration of the ramp), in this case, is 2 seconds. This is what causes the glissando effect you hear after running the last line of the example.
+* 追加機能として、freq が Lag.kr で囲まれていることに注意してください。 このシンセに新しい周波数値が入力されるたびに、Lag UGenは古い値と新しい値の間のramp を作成します。 この場合、「遅延時間」（ramp の持続時間）は2秒です。 これが、例の最後の行を実行した後に聞こえるグリッサンド効果になります。
 
 * ソースサウンド LFSaw.ar は、周波数として変数 chorus を使用します。 具体的な例：60 Hzの周波数値の場合、変数 chorus は次のような式になります
 
@@ -2779,8 +2779,8 @@ SuperCollider ドキュメントから、Quarks.gui を評価して、使用可�
 これで、SuperCollider の紹介は終わりです。 いくつかの追加学習リソースを以下にリストします。Enjoy!
 
 * Eli Fieldsteel による優れたYouTubeチュートリアルシリーズ。http://www.youtube.com/playlist?list=PLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC.
-* Scott WilsonとJames Harkinsによる標準のSC開始チュートリアルは、オンラインおよび組み込みのヘルプファイルで利用できます。http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
-* Nick Collins’ online tutorial: http://composerprogrammer.com/teaching/supercollider/
+* Scott Wilson と James Harkins による標準のSC開始チュートリアルは、オンラインおよび組み込みのヘルプファイルで利用できます。http://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html
+* Nick Collins のオンラインチュートリアル: http://composerprogrammer.com/teaching/supercollider/
 sctutorial/tutorial.html
 * 公式のSuperColliderメーリングリストは、多数のユーザーから友好的な助けを得るための最良の方法です。 初心者の方はこのリストの質問を歓迎します。 こちらからサインアップできます。 http://www.birmingham.ac.uk/facilities/BEAST/research/supercollider/mailinglist.aspx
 
