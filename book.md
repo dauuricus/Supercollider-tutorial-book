@@ -3,7 +3,7 @@ This .md is translation into Japanese a very good tutorial book "A Gentle Introd
 
 You can see the original book file here. https://works.bepress.com/bruno-ruviaro/3/
 
-<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png" width="150">
+<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png" width="200">
 
 ![1569163432316.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/b8fef7e8-3ae8-f8b3-e386-12e8385c7e1d.png)
 This work is licensed under the Creative Commons
