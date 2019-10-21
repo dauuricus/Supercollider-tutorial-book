@@ -1754,8 +1754,7 @@ a.linlin(1, 7, 0, 127).round(1);
 // 0から127、線形から指数
 a.linexp(1, 7, 0.01, 127).round(1); // 指数範囲にゼロを使用しないでください
 ```
-For a review of linear and exponential, look up online the difference between arithmetic and
-geometric sequences. Briefly, linear (arithmetic) sequences are like "1, 2, 3, 4, 5, 6" or "3, 6, 9,　12, 15", etc; and exponential (geometric)sequences are like "1, 2, 4, 8, 16, 32" or "3, 9, 27, 81,　243", etc.
+線形および指数関数のレビューについては、算術シーケンスと幾何学的シーケンスの違いをオンラインで調べてください。 簡単に言えば、線形（算術）シーケンスは「1、2、3、4、5、6」または「3、6、9、12、15」などです。 指数（幾何）シーケンスは「1、2、4、8、16、32」または「3、9、27、81、243」などのようになります。
 
 ### 28 個々のシンセを停止する
 
