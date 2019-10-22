@@ -2724,7 +2724,7 @@ MIDIdef.noteOff(\myKeyUp, {arg vel, note;
 
 * キーがリリースされるたびに、メッセージ .set(\gate,0) が適切なシンセノードに送信され、ノート番号によって配列から取得されます。
 
-この短いMIDIデモでは、SuperCollider へのMIDIの導入についてのみ説明しました。SuperColliderか らMIDIメッセージを取得するには、MIDIOut ヘルプファイルをご覧ください。
+この短いMIDIデモでは、SuperCollider へのMIDIの導入についてのみ説明しました。SuperColliderからMIDIメッセージを取得するには、MIDIOut ヘルプファイルをご覧ください。
 
 ### 44 OSC
 
