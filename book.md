@@ -1454,21 +1454,21 @@ x = 11; y = 12; // いくつかの変数を試します
 Array.series(size: 6, start: 10, step: 3);
 // 幾何級数 Geometric series
 Array.geom(size: 10, start: 1, grow: 2);
-// 2つを比較する：Compare the two:
+// 2つを比較する：
 Array.series(7, 100, -10); // 7アイテム; 100から開始、-10のステップ 7 items; start at 100, step of -10
 Array.geom(7, 100, 0.9); // 7アイテム; 100から開始。毎回0.9倍する 7 items; start at 100; multiply by 0.9 each time
 // .fillメソッドを満たす Meet the .fill method
 Array.fill(10, "same");
-// 比較　Compare:
+// 比較　:
 Array.fill(10, rrand(1, 10));
 Array.fill(10, {rrand(1, 10)}); // 関数は10回再評価されます
-// .fillメソッドの関数は、カウンターであるデフォルトの引数を取ることができます。The function for the .fill method can take a default argument that is a counter.
-// 引数名は何でも構いません。The argument name can be whatever you want.
+// .fillメソッドの関数は、カウンターであるデフォルトの引数を取ることができます。
+// 引数名は何でも構いません。
 Array.fill(10, {arg counter; counter * 10});
-// たとえば、高調波周波数のリストを生成します：For example, generating a list of harmonic frequencies:
+// たとえば、高調波周波数のリストを生成します：
 Array.fill(10, {arg wow; wow+1 * 440});
 // .newClearメソッド The .newClear method
-a = Array.newClear(7); // creates an empty array of given size
+a = Array.newClear(7); // 指定されたサイズの空の配列を作成します
 a[3] = "wow"; // a.put(3, "wow")と同じ
 
 ```
@@ -1494,7 +1494,7 @@ Array.fill(10, "hello");
 配列の作成に使用されるもう1つの一般的な構文のショートカットを次に示します。
 
 ```supercollider
-// What is this?
+// これは?
 (50..79);
 
 // 算術級数の配列を生成するショートカットです
@@ -1504,7 +1504,7 @@ series(50, 51, 79);
 Array.series(30, 50, 1);
 // 1以外のステップの場合、これを行うことができます:
 (50, 53 .. 79); // step of 3
-// Same result as:
+// 同じ結果:
 series(50, 53, 79);
 Array.series(10, 50, 3);
 ```
