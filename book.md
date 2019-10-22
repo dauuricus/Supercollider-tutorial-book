@@ -1455,9 +1455,9 @@ Array.series(size: 6, start: 10, step: 3);
 // 幾何級数 Geometric series
 Array.geom(size: 10, start: 1, grow: 2);
 // 2つを比較する：
-Array.series(7, 100, -10); // 7アイテム; 100から開始、-10のステップ 7 items; start at 100, step of -10
-Array.geom(7, 100, 0.9); // 7アイテム; 100から開始。毎回0.9倍する 7 items; start at 100; multiply by 0.9 each time
-// .fillメソッドを満たす Meet the .fill method
+Array.series(7, 100, -10); // 7アイテム; 100から開始、-10のステップ
+Array.geom(7, 100, 0.9); // 7アイテム; 100から開始。毎回0.9倍する
+// .fillメソッドを満たす
 Array.fill(10, "same");
 // 比較　:
 Array.fill(10, rrand(1, 10));
@@ -1467,7 +1467,7 @@ Array.fill(10, {rrand(1, 10)}); // 関数は10回再評価されます
 Array.fill(10, {arg counter; counter * 10});
 // たとえば、高調波周波数のリストを生成します：
 Array.fill(10, {arg wow; wow+1 * 440});
-// .newClearメソッド The .newClear method
+// .newClearメソッド
 a = Array.newClear(7); // 指定されたサイズの空の配列を作成します
 a[3] = "wow"; // a.put(3, "wow")と同じ
 
