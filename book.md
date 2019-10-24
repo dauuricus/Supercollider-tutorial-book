@@ -191,7 +191,7 @@ rrand(10, 20);   // 10∼20の乱数を生成します
 ```supercollider
 //ショートカット[ctrl + /]を使用して、1行のコードをすばやくコメントアウトできます。
 
-"Some SC code here...".postln;2
+"Some SC code here...".postln;
 
 2 + 2;
 
