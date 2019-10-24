@@ -750,7 +750,7 @@ Pbind(
 
 ### 14.3 移調
 
-\ctranspose キーワードを使用して、音の移調を実現します。これは、\degree,\note,および \midinote と連動しますが、\freq とは連動しません。
+\ctranspose キーワードを使用して、音の移調を実現します。これは、\degree、\note および  \midinote と連動しますが、\freq とは連動しません。
 
 ```supercollider
 (
