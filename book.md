@@ -344,7 +344,7 @@ Pbind(\freq,Pseq(~myFreqs),\dur,Pseq(~myDurs)).play;
 ~limes = 2;
 ~plantains = 1;
 
-[["Citrus", ~bloodOranges + ~limes ];  
+["Citrus", ~bloodOranges + ~limes ];  
 ["Non−citrus", ~plantains + ~galaApples ];  
 
 // ローカル変数：コードブロック内でのみ有効。
