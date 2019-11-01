@@ -353,7 +353,7 @@ Pbind(\freq,Pseq(~myFreqs),\dur,Pseq(~myDurs)).play;
 var apples = 4,oranges = 3,lemons = 8,bananas = 10;
 ["Citrus fruits", oranges + lemons].postln;  
 ["Non−citrus fruits", bananas + apples].postln;  
-"End" .postln;
+"End".postln;
 )
 
 ~galaApples; // まだ存在しています
