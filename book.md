@@ -434,7 +434,7 @@ Pbind(\degree,Pseq([0,1,2,3,4,5,6,7],1),\dur,0.2).play;
 
 -  	角括弧で囲まれたアイテムのリスト
 
--  	多数の繰り返し。
+-  	リストの繰り返し回数
 
 この例では、リストは [0,1,2,3,4,5,6,7] で、繰り返し回数は1です。この Pseq は、単に"リストのすべての項目を順番に再生する"という意味です。これらの2つの要素、リストと繰り返し回数は、Pseq の括弧内にあり、コンマで区切られていることに注意してください。
 
@@ -454,7 +454,7 @@ Pbind(\degree,Pseq([0,1,2,3,4,5,6,7],5),\dur,Pseq([0.2,0.1,0.1,0.2,0.2,0.35],inf
 
 Pbind は永遠にプレイしますか？ いいえ：他の Pseq がジョブを終了した後、つまり一連のスケール度が5回再生された後に停止します。
 
-最後に、この例には合計8つの異なるノート(最初の Pseq のリスト)がありますが、デュレーション(6番目の Pseq )には6つの値しかありません。このように異なるサイズのシーケンスを提供すると、Pbind は必要に応じて単純に循環します。
+最後に、この例には合計8つの異なるノート（最初の Pseq のリスト[0,1,2,3,4,5,6,7]）がありますが、デュレーション（2番目の Pseq ）には6つの値しかありません。このように異なるサイズのシーケンスを提供すると、Pbind は必要に応じて単純に循環します。
 
 これらの質問に答えて、学んだことを実践してください。
 
@@ -731,23 +731,23 @@ Pbind(
 ```supercollider
 (
 Pbind(
- \scale,Scale .harmonicMinor,
- \degree,Pseq([0,1,2,3,4,5,6,7],1),
- \dur,0.15;
- ).play;
- )
+	\scale,Scale .harmonicMinor,
+	\degree,Pseq([0,1,2,3,4,5,6,7],1),
+	\dur,0.15;
+).play;
+)
  
- // この行を評価して、使用可能なすべてのスケールのリストを表示します。
- Scale.directory;
+// この行を評価して、使用可能なすべてのスケールのリストを表示します。
+Scale.directory;
  
- // 1度の間に半音が必要な場合は、これを行います：
- (
- Pbind(
- 	\degree,Pseq([0,1,2,3,3.1,4],1),
- ).play;
- )
- 
- // 上記の3.1はスケール`3`の上の半音(この場合、Fの上のF＃)を意味します。\scaleを明示的に指定しない場合、Scale.majorが想定されることに注意してください。
+// 1度の間に半音が必要な場合は、これを行います：
+(
+Pbind(
+	\degree,Pseq([0,1,2,3,3.1,4],1),
+).play;
+)
+
+// 上記の3.1はスケール`3`の上の半音(この場合、Fの上のF＃)を意味します。\scaleを明示的に指定しない場合、Scale.majorが想定されることに注意してください。
 ```
 
 ### 14.3 移調
@@ -856,9 +856,10 @@ Pbind(
 2.wait;
 
 Pbind(
- 	\note,Pseq([[-25,-13,-1],[-20,-8,4 ],\rest],3),25 
+ 	\note,Pseq([[-25,-13,-1],[-20,-8,4 ],\rest],3), 
  	\dur,Pseq([1,1,Rest( 1)],inf),
- 	\amp,0.1,27 \legato,Pseq([0.4,0.7,\rest],inf)
+ 	\amp,0.1,
+ 	\legato,Pseq([0.4,0.7,\rest],inf)
 ).play(t);
 2.75.wait;
  
@@ -928,15 +929,15 @@ Pbind は、一種の楽譜として考えることができます。Pbind は�
 
 ```supercollider
 //スコアを定義する
- (
- p = Pbind(
- 	\midinote,Pseq([57,62,64,65,67,69],inf),
- 	\dur,1/7
- ); //ここでは再生しません！
- )
- 
- //プレイするスコアを要求する
- p.play;
+(
+p = Pbind(
+	\midinote,Pseq([57,62,64,65,67,69],inf),
+	\dur,1/7
+); //ここでは再生しません！
+)
+
+//プレイするスコアを要求する
+p.play;
 ```
 
 上記の例の変数pは単にスコアを保持します。Pbind には閉じ括弧の直後に .play メッセージがないことに注意してください。その時点で音は出ません。2番目の瞬間は、SuperColliderにそのスコアからプレイするように依頼したときです：p.play.
@@ -952,13 +953,13 @@ Pbind は、一種の楽譜として考えることができます。Pbind は�
 スコア（変数 p に格納されている Pbind ）は、開始または停止について何も知りません。これは単なるレシピです。プレーヤーは、開始、停止、"最初から始めてもらえませんか"などを知っている人です。つまり、EventStreamPlayer と話す必要があります。必要なことは、名前を付けること、つまり変数に保存することだけです 。
 
 ```supercollider
- //これらの行を1つずつ試します
- ~myPlayer = p.play;
- ~myPlayer.stop;
- ~myPlayer.resume;
- ~myPlayer.stop.reset;
- ~myPlayer.start;
- ~myPlayer.stop;
+//これらの行を1つずつ試します
+~myPlayer = p.play;
+~myPlayer.stop;
+~myPlayer.resume;
+~myPlayer.stop.reset;
+~myPlayer.start;
+~myPlayer.stop;
 ```
 
 要約すると、Pbind で .play を呼び出すと、EventStreamPlayer が生成されます。EventStreamPlayers を変数に保存すると、後でそれらにアクセスしてパターンを個別に開始および停止できます（ [ctrl +.] を使用する必要はありません。すべてを一度に強制終了します）。
@@ -978,12 +979,14 @@ var myDurs = Pseq([Pn(1,5),3,Pn(1,5),3,Pn(1,6),1/2,1/2,1,1,3,1,3] ,inf)* 0.4;
 ~lowerMelody = Pbind(
 
  	\midinote,Pseq([57,62,61,60,59,58,57,55,53,52,50,49,50,52,50,55,53,52,53,55,57,58,
- 61,62,62 ],inf),10 \dur,myDurs
+ 61,62,62 ],inf),
+	\dur,myDurs
 );
 )
 // 2つを一緒に再生します：
 (
-~player1 =~upperMelody .play; 16~player2 =~lowerMelody .play; 
+~player1 =~upperMelody.play;
+~player2 =~lowerMelody.play; 
 )
 //それらを個別に停止します：
 ~player1.stop;
