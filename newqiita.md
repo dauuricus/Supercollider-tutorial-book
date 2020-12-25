@@ -70,7 +70,7 @@ First published in 2014. This revision is from November 20, 2015.
 
 | ヒント：![bird2.PNG](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/aeddac1e-210a-163d-e461-7b901b0694ea.png) |
 | ------------------------------------------------------------ |
-| このドキュメント全体を通して、 ctrl （コントロール）は、 Linux および Windows プラットフォームで使用されるキーボードショートカットの modifier キーを示します。Mac OSX では、代わりに cmd （コマンド）を使用します。 |
+| このドキュメント全体を通して、 ctrl （コントロール）は、 Linux および Windows プラットフォームで使用されるキーボードショートカットの modifier キーを示します。Mac OSX では、代わりに cmd （コマンド）を使用します。 ![](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/225786/1ed1b2cb-db80-1f12-edf5-3b445b511c82.png) |
 
 図1は、最初に SuperCollider IDE（統合開発環境）を開いたときのスクリーンショットです。少し時間をかけて理解していきましょう。
 
