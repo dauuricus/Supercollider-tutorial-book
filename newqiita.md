@@ -1,4 +1,4 @@
-# A Gentle Introduction to SuperCollider
+md# A Gentle Introduction to SuperCollider
 この.mdは、Bruno Ruviaroが発行した非常に優れたチュートリアル本「SuperColliderの優しい紹介（第2版）」を日本語に翻訳したものです。[（作業中）](https://youtu.be/gmx9hSluftg?t=10)
 
 You can see the original book file here. https://works.bepress.com/bruno-ruviaro/3/
